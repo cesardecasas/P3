@@ -1,16 +1,16 @@
 {
   "development": {
-    "database": "P3_development",
+    "database": "project_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "database": "P3_test",
+    "database": "project_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
-    "database": "P3_production",
+    "database": "project_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
