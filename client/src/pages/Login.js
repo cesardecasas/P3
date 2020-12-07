@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import TextInput from '../components/TextInput'
-import '../styles/LogIn.css'
+
 
 const LogIn = ()=>{
 
