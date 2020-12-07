@@ -13,9 +13,9 @@ import ApiClient from './ApiClient'
   export default __CheckSession
 
 
-  export const __createUser=async(formData)=>{
+  export const __createUser =async(formData)=>{
     try {
-      const res = await ApiClient.post('/users', formData)
+      const res = await ApiClient.post('/user/register', formData)
       return res.data
     } catch (error) {
       throw error 

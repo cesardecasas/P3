@@ -8,8 +8,11 @@ const Nav = (authenticated, currentUser)=>{
 
     return !authenticated && !currentUser ? (
         <header >
-            <nav className="navbar">
-            <div class="container">
+
+            
+
+            <nav className='navbar navbar-dark bg-dark'>
+
             <NavLink className="btn btn-outline-success" to='/home' >
                     Home
                 </NavLink>
@@ -19,27 +22,33 @@ const Nav = (authenticated, currentUser)=>{
                 <NavLink className="btn btn-outline-success" to='/login'>
                     Log In
                 </NavLink>
-                </div>
+
+              
+
+                <NavLink className="btn btn-outline-success" onClick={() => localStorage.clear()} 
+                     to='/'>
+                        Sign Out
+                </NavLink>
+
             </nav>
         </header>
     ) : (
         <header>
-            <nav className="navbar">
-                <div className="container">
-                <NavLink className="btn btn-outline-success" to='/signup'>
+
+            <nav classsname='navbar navbar-dark bg-dark'>
+                <NavLink className="btn btn-outline-success" exact to='/signup'>
+
                     Sign Up
                 </NavLink>
-                <NavLink className="btn btn-outline-success" to='/login'>
+                <NavLink className="btn btn-outline-success" exact to='/login'>
                     Log In
                 </NavLink>
-                <NavLink className="btn btn-outline-success" to='/' >
+                <NavLink className="btn btn-outline-success" exact to='/' >
                     Home
                 </NavLink>
-                <NavLink className="btn btn-outline-success" onClick={() => localStorage.clear()} 
-                    to='/'>
-                        Sign Out
-                </NavLink>
-                </div>
+
+              
+
             </nav>
         </header>
     )
