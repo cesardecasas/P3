@@ -1,11 +1,11 @@
-const { hashPassword, passwordValid, createToken } = require('../middleware')
+const { hashPassword, passwordValid, createToken } = require('../middleware/Auth')
 const { User } = require('../models')
 
 const Register = async (req, res) => {
   try {
     const { name, email, password } = req.body
-    const passwordDigest = await hashPassword(password) // Creating a hashed password
-    const user = await User.create({ name, email, passwordDigest }) // Store the hashed password in the database
+    const password_digest = await hashPassword(password) // Creating a hashed password
+    const user = await User.create({ name, email, password_digest }) // Store the hashed password in the database
     res.send(user)
   } catch (error) {
     throw error
@@ -19,7 +19,7 @@ const Login = async (req, res) => {
       raw: true
     }) // Find a user by email
     // return the user with raw values, we dont need the model definitions for what we're doing here.
-    if (user && (await passwordValid(req.body.password, user.passwordDigest))) {
+    if (user && (await passwordValid(req.body.password, user.password_digest))) {
       // We check if there is a user and if the provided password in the request is a match with the stored password digest
       let payload = {
         // Create the jwt payload, keep sensitive information out of the payload
