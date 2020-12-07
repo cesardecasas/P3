@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   Board.init({
     name: DataTypes.STRING,
-    task_id: DataTypes.INTEGER
+    task_id: DataTypes.INTEGER,
+    user_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Board',

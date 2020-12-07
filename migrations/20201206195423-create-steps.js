@@ -20,6 +20,15 @@ module.exports = {
       struggles: {
         type: Sequelize.BOOLEAN
       },
+      task_id: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'tasks',
+          key: 'id',
+          as: 'tasks_id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

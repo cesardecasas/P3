@@ -11,11 +11,23 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      board_id: {
-        type: Sequelize.INTEGER
-      },
       user_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'user',
+          key: 'id',
+          as: 'user_id'
+        }
+      },
+      board_id: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'board',
+          key: 'id',
+          as: 'board_id'
+        }
       },
       createdAt: {
         allowNull: false,
