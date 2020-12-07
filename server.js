@@ -4,7 +4,6 @@ const logger = require('morgan')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const helmet = require('helmet')
-const connection = require('./db/connection')
 const path = require('path')
 
 const PORT = process.env.PORT || 3001
@@ -21,18 +20,19 @@ app.use(express.static(path.join(__dirname, 'client', 'build')))
 
 
 
-
+app.get('/', (req, res) => res.json({ message: 'Server Works x2' }))
 
 app.use('/api', AppRouter)
-app.get('*', (req,res)=>res.sendFile(path.join(__dirname, 'clinet', 'build','index.html')))
+app.get('*', (req,res)=>res.sendFile(path.join(__dirname, 'client', 'build','index.html')))
 
 
 app.listen(PORT, async () => {
     try {
-      await connection
+      // await connection
       console.log('Database Connected')
       console.log(`App listening on port: ${PORT}`)
     } catch (error) {
-      throw new Error('Connection Error')
+      // throw new Error('Connection Error')
+      console.log(error)
     }
   })

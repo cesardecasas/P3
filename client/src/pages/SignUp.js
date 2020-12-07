@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import '../styles/SingUp.css'
+
 import TextInput from '../components/TextInput'
 import {__createUser} from '../services/UserServices'
 import {__createAccount} from '../services/AccountServices'
