@@ -1,5 +1,11 @@
 import React, { useEffect,useState} from 'react'
-import { Switch,Route,withRouter } from "react-router-dom"
+import { Switch,Route, withRouter } from "react-router-dom"
+import ProtectedRoute  from './ProtectedRoute';
+import SignUp  from '../pages/SignUp';
+import LogIn  from '../pages/Login';
+import AboutUs from '../pages/AboutUs';
+import __CheckSession  from '../services/UserServices';
+import Layout from './Layout';
 
 
 const Router  = () => {
@@ -37,7 +43,7 @@ const Router  = () => {
         <Switch>
           <Route exact path='/' component={(props)=>(
               <Layout>
-                <Home {...props}/>
+                <AboutUs {...props}/>
               </Layout>
           )}/>
           <Route toggleAuthenticated={toggleAuthenticated} path='/login' component={(props)=>(
@@ -52,12 +58,12 @@ const Router  = () => {
           )}/>    
           <ProtectedRoute authenticated={authenticated} exact path='/board' component={(props)=>(
             <Layout  authenticated={authenticated}>
-              <ViewBoard {...props}/>
+              {/* <ViewBoard {...props}/> */}
             </Layout>
           )}/>
           <ProtectedRoute authenticated={authenticated} path='/profile/create' component={(props)=>(
             <Layout  authenticated={authenticated}>
-              <CreateProfile {...props}/>
+              {/* <CreateProfile {...props}/> */}
               </Layout>
           )}/>
         </Switch>
