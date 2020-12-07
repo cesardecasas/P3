@@ -8,11 +8,13 @@ import __CheckSession  from '../services/UserServices';
 import Layout from './Layout';
 
 
-const Router  = () => {
+const Router  = (props) => {
 
     const [currentUser,setCurrentUser]=useState(null)
     const [authenticated,setAuthenticated]=useState(false)
     
+    
+
     const verifyTokenValid = async () => {
         const token = localStorage.getItem('token')
         if (token) {
@@ -21,6 +23,7 @@ const Router  = () => {
             console.log('session', session)
             setAuthenticated(true)
             setCurrentUser(session.user)
+            
           } catch (error) {
             setCurrentUser(null)
             setAuthenticated(false)
@@ -32,6 +35,7 @@ const Router  = () => {
      const toggleAuthenticated = (value, user, done) => {
         setAuthenticated(value)
         currentUser(user)
+        
       }
     
       useEffect(()=>{
@@ -42,17 +46,17 @@ const Router  = () => {
         <div>
         <Switch>
           <Route exact path='/' component={(props)=>(
-              <Layout>
+              <Layout authenticated={authenticated}>
                 <AboutUs {...props}/>
               </Layout>
           )}/>
           <Route toggleAuthenticated={toggleAuthenticated} path='/login' component={(props)=>(
-            <Layout>
+            <Layout authenticated={authenticated}>
               <LogIn {...props}/>
             </Layout>
           )}/>
           <Route path='/signup' component={(props)=>(
-              <Layout>
+              <Layout authenticated={authenticated}>
                 <SignUp {...props}/>
               </Layout>
           )}/>    
