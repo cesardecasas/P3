@@ -1,6 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
-// import '../styles/Nav.css'
+import '../styles/Nav.css'
 
 
 const Nav = (authenticated, currentUser)=>{
@@ -35,15 +35,15 @@ const Nav = (authenticated, currentUser)=>{
     ) : (
         <header>
 
-            <nav classsname='navbar navbar-dark bg-dark'>
-                <NavLink className="btn btn-outline-success" exact to='/signup'>
+            <nav className='navbar navbar-light'>
+                <NavLink className="btn btn-outline-primary" exact to='/signup'>
 
                     Sign Up
                 </NavLink>
-                <NavLink className="btn btn-outline-success" exact to='/login'>
+                <NavLink className="btn btn-outline-primary" exact to='/login'>
                     Log In
                 </NavLink>
-                <NavLink className="btn btn-outline-success" exact to='/' >
+                <NavLink className="btn btn-outline-primary" exact to='/' >
                     Home
                 </NavLink>
 
