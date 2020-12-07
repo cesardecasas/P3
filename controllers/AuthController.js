@@ -3,6 +3,7 @@ const { User } = require('../models')
 
 const Register = async (req, res) => {
   try {
+    console.log(req.body)
     const { name, email, password } = req.body
     const password_digest = await hashPassword(password) // Creating a hashed password
     const user = await User.create({ name, email, password_digest }) // Store the hashed password in the database

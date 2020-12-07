@@ -9,8 +9,7 @@ const SignUp =(props)=>{
 
     
     const [ email,setEmail]=useState('')
-    const [ password_digest,setPassword]=useState('')
-    const [user_id, setUser]=useState('')
+    const [ password,setPassword]=useState('')
     const [name , setName]=useState('')
     
     const handleChangeN = ({target}) => {
@@ -25,17 +24,22 @@ const SignUp =(props)=>{
     const handleChangeP =({target})=>{
         setPassword(target.value)
     }
-    const formData= {email,password_digest}
+
     
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
+            const formData = {
+                name,
+                email,
+                password
+            }
           const res = await __createUser(formData)
+          setName('')
           setPassword('')
           setEmail('')
-          setUser(res.id)
-          await __createAccount(user_id)
+          props.history.push('/login')
         } catch (error) {
           console.log(error)
         }
@@ -71,7 +75,7 @@ const SignUp =(props)=>{
                     placeholder='Your Password'
                     type='password'
                     name='password'
-                    value={password_digest}
+                    value={password}
                     onChange={handleChangeP}
                     className='last'
                 />
