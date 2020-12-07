@@ -14,6 +14,15 @@ module.exports = {
       task_id: {
         type: Sequelize.INTEGER
       },
+      user_id: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key: 'id',
+          as: 'user_id'
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
