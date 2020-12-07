@@ -46,31 +46,38 @@ const Router  = (props) => {
         <div>
        <Layout authenticated={authenticated}>
           <Switch>
-              <Route exact path='/' component={(props)=>(
-                
-                    <AboutUs {...props}/>
-                  
-              )}/>
-              <Route toggleAuthenticated={toggleAuthenticated} path='/login' component={(props)=>(
-              
+              <Route 
+              exact path='/' 
+              component={ props => 
+                  <AboutUs {...props}/>
+              }/>
+
+              <Route 
+              toggleAuthenticated={toggleAuthenticated} 
+              path='/login' 
+              component={ props => 
                   <LogIn {...props}/>
-                
-              )}/>
-              <Route path='/signup' component={(props)=>(
-              
-                    <SignUp {...props}/>
-                
-              )}/>    
-              <ProtectedRoute authenticated={authenticated} exact path='/board' component={(props)=>(
-              
-                  {/* <ViewBoard {...props}/> */}
-              
-              )}/>
-              <ProtectedRoute authenticated={authenticated} path='/profile/create' component={(props)=>(
-              
-                  {/* <CreateProfile {...props}/> */}
-                
-              )}/>
+              }/>
+
+              <Route 
+              path='/signup' 
+              component={ props => 
+                  <SignUp {...props}/>
+              }/>    
+
+              <ProtectedRoute 
+              authenticated={authenticated} 
+              exact path='/board' 
+              component={ props =>{/* <ViewBoard {...props}/> */}
+              }/>
+
+              <ProtectedRoute
+               authenticated={authenticated} 
+               path='/profile/create' 
+               component={props=>{/* 
+                  <CreateProfile {...props}/> */}
+               }/>
+
             </Switch>
        </Layout>
     </div>
