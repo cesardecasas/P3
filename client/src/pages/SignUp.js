@@ -11,6 +11,11 @@ const SignUp =(props)=>{
     const [ email,setEmail]=useState('')
     const [ password_digest,setPassword]=useState('')
     const [user_id, setUser]=useState('')
+    const [name , setName]=useState('')
+    
+    const handleChangeN = ({target}) => {
+        setName(target.value)
+    }
 
     
     const handleChangeE =({target})=>{
@@ -42,6 +47,15 @@ const SignUp =(props)=>{
             <form className='form flex-col box' onSubmit={handleSubmit}>
                 <h2>Sign Up</h2>
                 
+
+                <p>Name:</p>
+                <TextInput
+                    placeholder="What's Your Name"
+                    type='name'
+                    name='name'
+                    value={name}
+                    onChange={handleChangeN}
+                />
 
                 <p>Email</p>
                 <TextInput
