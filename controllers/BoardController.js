@@ -46,10 +46,21 @@ const getBoard = async(req,res)=>{
     }
 }
 
+const getUserBoards = async(req,res)=>{
+    try {
+        let userId = parseInt(req.params.user_id)
+        let board = Board.find({where:{user_id:userId}})
+        res.send(board)
+    } catch (error) {
+        throw error
+    }
+}
+
 module.exports = {
     createBoard,
     deleteBoard,
     updateBoard,
-    getBoard
+    getBoard,
+    getUserBoards
 
 }
