@@ -3,7 +3,7 @@ import ApiClient from './ApiClient'
 
   const  __CheckSession = async()=>{
     try {
-      const res = await ApiClient.get('/users/refresh/session')
+      const res = await ApiClient.get('/user/session')
       return res.data
     } catch (error) {
       throw error
@@ -22,4 +22,13 @@ import ApiClient from './ApiClient'
     }
   }
 
+  export const __LoginUser = async (userData) => {
+    try {
+      const res = await ApiClient.post('/user/login', userData)
+      localStorage.setItem('token', res.data.token)
+      return res.data
+    } catch (error) {
+      throw error
+    }
+  }
   
