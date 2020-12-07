@@ -7,7 +7,7 @@ const LogIn = ()=>{
     
     const [ email,setEmail]=useState('')
     const [ password,setPassword]=useState('')
-
+   
 
     
     const handleChangeE =({target})=>{
@@ -17,12 +17,13 @@ const LogIn = ()=>{
     const handleChangeP =({target})=>{
         setPassword(target.value)
     }
-    return (<div>
-        <div className='singup'>
+    return (
+    <div>
+        <div className='signup'>
             <form className='form flex-col box'>
                 <h2>Log In</h2>
-                
 
+                
                 <p>Email</p>
                 <TextInput
                     placeholder='Your Email'
