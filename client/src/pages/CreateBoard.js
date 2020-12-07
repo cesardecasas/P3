@@ -8,6 +8,10 @@ const validators = (value)=> {
 
     if (!value.name) {
         errors.name = 'Title is required'
+    
+    }
+    if (!value.task) {
+        errors.task = "task is required"
     }
     return errors
 }
@@ -32,9 +36,9 @@ const NewBoard = () => {
     return (
         <div className="Board">
             <Nav title="Boards" />
-            <div className="container mt-5">
-                <div className="row">
-                    <div className="col-md-6 offset-md-3 col-sm-12">
+            <div>
+                <div>
+                    <div>
                         { message!==''? (<div className="alert alert-success" >{message}</div>) :''}
                         <h3>New Board</h3>
                         <Form
@@ -43,8 +47,9 @@ const NewBoard = () => {
                         render={(formProps) =>(
                             <div>
                                 <CustomField name="name" inputType="text" label="name"  placeholder="name..." />
+                                <CustomField name = "task" inputType ="text" label="task" placeholder="task..."/>
                                 <button type="submit" className="btn btn-success" onClick={formProps.handleSubmit} disabled={loading}>
-                                    {loading ? ('Creating post...'): ('Create')}
+                                    {loading ? ('Creating board...'): ('Create')}
                                 </button>
                             </div>
                             
