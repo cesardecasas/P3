@@ -8,22 +8,24 @@ const Nav = (authenticated, currentUser)=>{
 
     return !authenticated && !currentUser ? (
         <header >
-            <nav className='navbar  '>
+            <nav className="navbar">
+            <div class="container">
             <NavLink className="btn btn-outline-success" to='/home' >
                     Home
                 </NavLink>
                 <NavLink className="btn btn-outline-success" to='/' >
                     About Us
                 </NavLink>
-                
                 <NavLink className="btn btn-outline-success" to='/login'>
                     Log In
                 </NavLink>
+                </div>
             </nav>
         </header>
     ) : (
         <header>
-            <nav>
+            <nav className="navbar">
+                <div className="container">
                 <NavLink className="btn btn-outline-success" to='/signup'>
                     Sign Up
                 </NavLink>
@@ -37,6 +39,7 @@ const Nav = (authenticated, currentUser)=>{
                     to='/'>
                         Sign Out
                 </NavLink>
+                </div>
             </nav>
         </header>
     )
