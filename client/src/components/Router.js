@@ -7,6 +7,7 @@ import AboutUs from '../pages/AboutUs';
 import __CheckSession  from '../services/UserServices';
 import Layout from './Layout';
 import Home from '../pages/Home'
+import Board from '../pages/Board'
 
 const Router  = (props) => {
 
@@ -77,7 +78,7 @@ const Router  = (props) => {
               authenticated={authenticated}
               currentUser={currentUser} 
               exact path='/board' 
-              component={ props =>{/* <ViewBoard {...props}/> */}
+              component={ props =>{<Board {...props}/>}
               }/>
 
               <ProtectedRoute

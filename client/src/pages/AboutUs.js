@@ -25,8 +25,10 @@ export default () => {
           <Link to="/signup">Get Started</Link>
 
         </div>
+
         <div className='a'>
           <Carousel/>
+
         </div>
 </div>
 
