@@ -16,6 +16,10 @@ const Nav = (props)=>{
 
             <NavLink className="btn btn-outline-primary" to='/home' >
                     Home
+                </NavLink >
+
+                <NavLink className="btn btn-outline-primary" exact to='/board'>
+                    My Boards
                 </NavLink>
                 <NavLink className="btn btn-outline-primary" onClick={() => {
                     localStorage.clear()

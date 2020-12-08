@@ -1,11 +1,11 @@
 import axios from 'axios';
 import ApiClient from './ApiClient'
 
+const service = {
+    Boards: `${ApiClient}/boards`
+  }
 
 const BoardService = {
-    service = {
-        Boards: `${ApiClient}/boards`
-      },
     
     get:async ()=>{
         const res = await  axios.get(service.Boards);
