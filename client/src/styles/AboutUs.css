@@ -1,4 +1,4 @@
 img {
-    width: 5px;
-    height: 5x;
+    max-width: 75px;
+    max-height: 75px;
 }
