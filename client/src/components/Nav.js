@@ -6,29 +6,23 @@ import '../styles/Nav.css'
 const Nav = (authenticated, currentUser)=>{
 
 
-    return !authenticated && !currentUser ? (
+    return authenticated && currentUser ? (
         <header >
 
             
 
-            <nav className='navbar navbar-dark bg-dark'>
+            <nav className='navbar navbar-light'>
 
-            <NavLink className="btn btn-outline-success" to='/home' >
+            <NavLink className="btn btn-outline-primary" to='/home' >
                     Home
                 </NavLink>
-                <NavLink className="btn btn-outline-success" to='/' >
-                    About Us
-                </NavLink>
-                <NavLink className="btn btn-outline-success" to='/login'>
-                    Log In
-                </NavLink>
-
-              
-
-                <NavLink className="btn btn-outline-success" onClick={() => localStorage.clear()} 
-                     to='/'>
+                <NavLink className="btn btn-outline-primary" onClick={() => localStorage.clear()} 
+                    exact to='/'>
                         Sign Out
                 </NavLink>
+              
+
+                
 
             </nav>
         </header>
@@ -44,8 +38,9 @@ const Nav = (authenticated, currentUser)=>{
                     Log In
                 </NavLink>
                 <NavLink className="btn btn-outline-primary" exact to='/' >
-                    Home
+                     About Us
                 </NavLink>
+                
 
               
 

@@ -13,7 +13,8 @@ const Router  = (props) => {
     const [currentUser,setCurrentUser]=useState(null)
     const [authenticated,setAuthenticated]=useState(false)
     
-    
+    let a=()=> props.history.push('/home')
+    let b=()=> props.history.push('/')
 
     const verifyTokenValid = async () => {
         const token = localStorage.getItem('token')
@@ -23,13 +24,14 @@ const Router  = (props) => {
             console.log('session', session)
             setAuthenticated(true)
             setCurrentUser(session.user)
-            let a=()=> props.history.push('/home')
+            
             a()
             
           } catch (error) {
             setCurrentUser(null)
             setAuthenticated(false)
             localStorage.clear()
+            b()
           }
         }
       }
