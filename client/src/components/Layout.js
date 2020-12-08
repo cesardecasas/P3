@@ -1,14 +1,16 @@
 import React from 'react'
 import Nav from './Nav'
 
- const Layout = ({ children, authenticated, currentUser }) => (
+ const Layout = (props) => (
   <div>
     <Nav
-      authenticated={authenticated}
-      currentUser={currentUser}
+      authenticated={props.authenticated}
+      currentUser={props.currentUser}
+      setAuthenticated={props.setAuthenticated}
       className="header-elevated"
+      
     />
-    {children}
+    {props.children}
   </div>
 )
 
