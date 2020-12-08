@@ -48,7 +48,11 @@ const Router  = (props) => {
 
       return(
         <div>
-       <Layout authenticated={authenticated}>
+       <Layout 
+        authenticated={authenticated} 
+        currentUser={currentUser}
+        setAuthenticated={setAuthenticated}
+      >
           <Switch>
               <Route 
               exact path='/' 
