@@ -17,7 +17,7 @@ export default () => {
                   </p>
         </div>
         <div className="hero-action">
-          <Link to="/register">Get Started</Link>
+          <Link to="/signup">Get Started</Link>
         </div>
         <div className="carousel">
           <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel">
