@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import BoardService from '../services/BoardServices'
 
-
 const  Board = () => {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
