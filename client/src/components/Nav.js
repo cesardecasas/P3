@@ -3,10 +3,11 @@ import {NavLink} from 'react-router-dom'
 import '../styles/Nav.css'
 
 
-const Nav = (authenticated, currentUser)=>{
+const Nav = (props)=>{
 
 
-    return authenticated && currentUser ? (
+
+    return props.authenticated && props.currentUser  ? (
         <header >
 
             
@@ -16,7 +17,10 @@ const Nav = (authenticated, currentUser)=>{
             <NavLink className="btn btn-outline-primary" to='/home' >
                     Home
                 </NavLink>
-                <NavLink className="btn btn-outline-primary" onClick={() => localStorage.clear()} 
+                <NavLink className="btn btn-outline-primary" onClick={() => {
+                    localStorage.clear()
+                    props.setAuthenticated(false)
+                }} 
                     exact to='/'>
                         Sign Out
                 </NavLink>
@@ -31,7 +35,6 @@ const Nav = (authenticated, currentUser)=>{
 
             <nav className='navbar navbar-light'>
                 <NavLink className="btn btn-outline-primary" exact to='/signup'>
-
                     Sign Up
                 </NavLink>
                 <NavLink className="btn btn-outline-primary" exact to='/login'>
