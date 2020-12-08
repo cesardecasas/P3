@@ -24,11 +24,11 @@ const LogIn = (props)=>{
         e.preventDefault()
         try {
             const userInf={email, password}
-            let a =()=> props.history.push('/home')
+            
           const loginData = await __LoginUser(userInf)
           console.log(loginData)
           props.toggleAuthenticated(true, loginData.user, () =>
-            props.history.push('/feed')
+            props.history.push('/home')
           )
           return
         } catch (error) {
