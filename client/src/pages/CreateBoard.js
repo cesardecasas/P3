@@ -22,9 +22,9 @@ const NewBoard = () => {
     const history = useHistory();
 
     const onSubmit = values=>{
-        const {title} = values;
+        const {name} = values;
         setLoading(true);
-        BoardService.create({title})
+        BoardService.create({name})
         .then(res=>{
             setLoading(false);
             setMessage(res.data.message);
