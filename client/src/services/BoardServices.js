@@ -1,10 +1,12 @@
 import axios from 'axios';
+import ApiClient from './ApiClient'
 
 
 const BoardService = {
     service = {
-        Boards: `${BASE_URL}/board` 
+        Boards: `${ApiClient}/boards`
       },
+    
     get:async ()=>{
         const res = await  axios.get(service.Boards);
         return res;
