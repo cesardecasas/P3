@@ -44,36 +44,45 @@ const Router  = (props) => {
 
       return(
         <div>
-        <Switch>
-          <Route exact path='/' component={(props)=>(
-              <Layout authenticated={authenticated}>
-                <AboutUs {...props}/>
-              </Layout>
-          )}/>
-          <Route toggleAuthenticated={toggleAuthenticated} path='/login' component={(props)=>(
-            <Layout authenticated={authenticated}>
-              <LogIn {...props}/>
-            </Layout>
-          )}/>
-          <Route path='/signup' component={(props)=>(
-              <Layout authenticated={authenticated}>
-                <SignUp {...props}/>
-              </Layout>
-          )}/>    
-          <ProtectedRoute authenticated={authenticated} exact path='/board' component={(props)=>(
-            <Layout  authenticated={authenticated}>
-              {/* <ViewBoard {...props}/> */}
-            </Layout>
-          )}/>
-          <ProtectedRoute authenticated={authenticated} path='/profile/create' component={(props)=>(
-            <Layout  authenticated={authenticated}>
-              {/* <CreateProfile {...props}/> */}
-              </Layout>
-          )}/>
-        </Switch>
+       <Layout authenticated={authenticated}>
+          <Switch>
+              <Route 
+              exact path='/' 
+              component={ props => 
+                  <AboutUs {...props}/>
+              }/>
+
+              <Route 
+              toggleAuthenticated={toggleAuthenticated} 
+              path='/login' 
+              component={ props => 
+                  <LogIn {...props}/>
+              }/>
+
+              <Route 
+              path='/signup' 
+              component={ props => 
+                  <SignUp {...props}/>
+              }/>    
+
+              <ProtectedRoute 
+              authenticated={authenticated} 
+              exact path='/board' 
+              component={ props =>{/* <ViewBoard {...props}/> */}
+              }/>
+
+              <ProtectedRoute
+               authenticated={authenticated} 
+               path='/profile/create' 
+               component={props=>{/* 
+                  <CreateProfile {...props}/> */}
+               }/>
+
+            </Switch>
+       </Layout>
     </div>
       )
     
 }
 
-export default Router
+export default withRouter(Router)
