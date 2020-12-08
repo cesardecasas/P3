@@ -6,7 +6,7 @@ import LogIn  from '../pages/Login';
 import AboutUs from '../pages/AboutUs';
 import __CheckSession  from '../services/UserServices';
 import Layout from './Layout';
-
+import Home from '../pages/Home'
 
 const Router  = (props) => {
 
@@ -78,8 +78,9 @@ const Router  = (props) => {
                authenticated={authenticated}
                currentUser={currentUser}  
                path='/home' 
-               component={props=>{/* 
-                  <CreateProfile {...props}/> */}
+               component={props=>
+                <Home {...props} authenticated={authenticated}
+                currentUser={currentUser}  />
                }/>
 
             </Switch>
