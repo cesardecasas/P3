@@ -25,11 +25,11 @@ const LogIn = (props)=>{
         try {
             const userInf={email, password}
             
-          const loginData = await __LoginUser(userInf)
-          console.log(loginData)
+          const loginData = await __LoginUser(userInf)          
           props.toggleAuthenticated(true, loginData.user, () =>
             props.history.push('/home')
           )
+          
           return
         } catch (error) {
           setFormError(true)
