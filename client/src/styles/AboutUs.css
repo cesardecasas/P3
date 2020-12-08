@@ -1,5 +1,5 @@
 .carousel-size{
-    max-width: 400px;
+    width: 100px;
     max-height: 400px;
     display: block;
     margin-top: 80px;
@@ -8,14 +8,9 @@
     width: 50%;
 }
 
-img{
-    max-width: 400px;
-    max-height: 400px;
-    display: block;
-    margin-top: 80px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+.carousel-item{
+    height: 600px;
+    width: 600px;
 }
 .what-is-it{
    
@@ -23,4 +18,22 @@ img{
 }
 .hero-action{
     color: darkred;
+}
+
+.a{
+    grid-row: 4;
+    height: 600px;
+    width: 600px;
+    align-self: center;
+    justify-self: center;
+    justify-content: center;
+}
+
+.main{
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.hero{
+    grid-row: 1;
 }
