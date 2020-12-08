@@ -3,7 +3,7 @@ import React from "react";
 const Home = () => {
     try{
 
-    } catch(errror){
+    } catch(error){
         console.log(error)
     }
     return(
