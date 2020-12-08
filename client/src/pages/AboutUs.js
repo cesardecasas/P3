@@ -44,7 +44,7 @@ export default () => {
           <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
-          </a>>>>>>>> main
+          </a>
         </div>
         <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
   <div className="carousel-inner">
