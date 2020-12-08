@@ -6,7 +6,7 @@ import LogIn  from '../pages/Login';
 import AboutUs from '../pages/AboutUs';
 import __CheckSession  from '../services/UserServices';
 import Layout from './Layout';
-
+import Home from '../pages/Home'
 
 const Router  = (props) => {
 
@@ -23,6 +23,8 @@ const Router  = (props) => {
             console.log('session', session)
             setAuthenticated(true)
             setCurrentUser(session.user)
+            let a=()=> props.history.push('/home')
+            a()
             
           } catch (error) {
             setCurrentUser(null)
@@ -33,14 +35,14 @@ const Router  = (props) => {
       }
     
      const toggleAuthenticated = (value, user, done) => {
-        setAuthenticated(value)
-        currentUser(user)
-        
+       setAuthenticated(value)
+       currentUser(user)
+       
       }
     
       useEffect(()=>{
           verifyTokenValid()
-      })
+      },[authenticated])
 
       return(
         <div>
@@ -56,7 +58,7 @@ const Router  = (props) => {
               toggleAuthenticated={toggleAuthenticated} 
               path='/login' 
               component={ props => 
-                  <LogIn {...props}/>
+                  <LogIn {...props} toggleAuthenticated={toggleAuthenticated}  currentUser={currentUser}  />
               }/>
 
               <Route 
@@ -66,16 +68,19 @@ const Router  = (props) => {
               }/>    
 
               <ProtectedRoute 
-              authenticated={authenticated} 
+              authenticated={authenticated}
+              currentUser={currentUser} 
               exact path='/board' 
               component={ props =>{/* <ViewBoard {...props}/> */}
               }/>
 
               <ProtectedRoute
-               authenticated={authenticated} 
-               path='/profile/create' 
-               component={props=>{/* 
-                  <CreateProfile {...props}/> */}
+               authenticated={authenticated}
+               currentUser={currentUser}  
+               path='/home' 
+               component={props=>
+                <Home {...props} authenticated={authenticated}
+                currentUser={currentUser}  />
                }/>
 
             </Switch>
