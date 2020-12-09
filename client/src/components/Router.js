@@ -9,6 +9,7 @@ import Layout from './Layout';
 import Home from '../pages/Home'
 import MyBoards from '../pages/MyBoards'
 import NewBoard from '../pages/NewBoard'
+import BoardTask from '../pages/BoardTask'
 
 
 const Router  = (props) => {
@@ -29,7 +30,7 @@ const Router  = (props) => {
             setAuthenticated(true)
             setCurrentUser(session.user)
             console.log(session.user);
-            //a()
+            a()
             
           } catch (error) {
             console.log(error);

@@ -4,6 +4,7 @@ import BoardServices from '../services/BoardServices.js';
 
 const NewBoard = (props)=>{
     const [ boardName,setBoardName]=useState('')
+    const [formError, setFormError]=useState(false)
 
     const handleChangeB =({target})=>{
         setBoardName(target.value)
