@@ -2,7 +2,7 @@ import axios from 'axios';
 import ApiClient from './ApiClient'
 
 const service = {
-    Boards: `${ApiClient}/boards`
+    Boards: `${ApiClient}/board`
   }
 
 const BoardService = {
