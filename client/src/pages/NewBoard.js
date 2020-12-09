@@ -4,7 +4,7 @@ import BoardServices from '../services/BoardServices.js';
 
 const NewBoard = (props)=>{
     const [ boardName,setBoardName]=useState('')
-    const [formError, setFormError]=useState(false)
+   //const [formError,setFormError]=useState(false)
 
     const handleChangeB =({target})=>{
         setBoardName(target.value)
@@ -15,7 +15,7 @@ const NewBoard = (props)=>{
         try{
            const res =  await BoardServices.create();
         }catch (error) {
-            setFormError(true)
+            throw error
         }
     }
 
