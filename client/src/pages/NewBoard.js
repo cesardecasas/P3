@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import TextInput from '../components/TextInput'
-import BoardServices from '../services/BoardServices.js';
+import __CreateBoard from '../services/BoardServices.js';
 
 const NewBoard = (props)=>{
     const [ boardName,setBoardName]=useState('')
@@ -13,7 +13,7 @@ const NewBoard = (props)=>{
     const handleSubmit = async (e) => {
         e.preventDefault()
         try{
-           const res =  await BoardServices.create();
+           const res =  await __CreateBoard.create({name:boardName} );
         }catch (error) {
             throw error
         }
