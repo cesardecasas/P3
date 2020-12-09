@@ -4,7 +4,7 @@ import '../styles/Home.css'
 
 const Home = (props) => {
     try{
-        console.log(props)
+      
     } catch(error){
         console.log(error)
     }
@@ -16,14 +16,14 @@ const Home = (props) => {
                         Let's Get It Done!
                     </h2>
                     <p>
-                        Sticky Board!
+                        <strong>Sticky Board!</strong>
                     </p>
                 </div>
                 <div className='intro-footer'>
                     <img className='image'  src={logo} />
-                    <p><span>Welcome Back, {props.currentUser.name}</span></p>
+                    <p><strong>Welcome Back, {props.currentUser.name}</strong></p>
                 </div>
-                
+                <a href=''><button>Create a New Board</button></a>
             </div>
         </div>
     )
