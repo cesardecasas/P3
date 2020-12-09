@@ -1,5 +1,6 @@
  import ApiClient from './ApiClient'
 
+
 export const __GetBoards =async(boardId)=>{
     try {
         const res = await ApiClient.get(`/board/${boardId}`)
@@ -8,7 +9,6 @@ export const __GetBoards =async(boardId)=>{
         throw error 
     }
 }
-
 
 export const __CreateBoard = async (formData, userId) => {
     try {
@@ -19,7 +19,7 @@ export const __CreateBoard = async (formData, userId) => {
     }
 }
 
-export const __GetBoard = async (boardId) => {
+ export const __GetBoard = async (boardId) => {
   try {
     const res = await ApiClient.get(`/board/${boardId}`)
     return res.data
@@ -37,9 +37,4 @@ export const __UpdateBoard = async (formData, boardId) => {
   }
 }
 
-// module.exports (
-//     __GetBoards,
-//     __CreateBoard,
-//     __GetBoard,
-//     __UpdateBoard        
-// )
+
