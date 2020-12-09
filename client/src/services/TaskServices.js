@@ -2,17 +2,13 @@ import axios from 'axios';
 import ApiClient from './ApiClient'
 
 const service = {
-    Boards: `${ApiClient}/board`
+   Tasks: `${ApiClient}/task`
   }
 
-const BoardService = {
+const TaskService = {
     
-    get:async ()=>{
-        const res = await  axios.get(service.Boards);
-        return res;
-    },
-    getById:async (boardId)=>{
-        const res = await  axios.get(`${service.Boards}/${boardId}`);
+    get:async (boardId)=>{
+        const res = await  axios.get(`${service.Tasks}/${boardId}`);
         return res;
     },
     delete:async (boardId)=>{

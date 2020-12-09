@@ -8,6 +8,7 @@ import __CheckSession  from '../services/UserServices';
 import Layout from './Layout';
 import Home from '../pages/Home'
 import MyBoards from '../pages/MyBoards'
+import NewBoard from '../pages/NewBoard'
 
 const Router  = (props) => {
 
@@ -19,16 +20,18 @@ const Router  = (props) => {
 
     const verifyTokenValid = async () => {
         const token = localStorage.getItem('token')
+        
         if (token) {
           try {
             const session = await __CheckSession()
             console.log('session', session)
             setAuthenticated(true)
             setCurrentUser(session.user)
-            
-            a()
+            console.log(session.user);
+            //a()
             
           } catch (error) {
+            console.log(error);
             setCurrentUser(null)
             setAuthenticated(false)
             localStorage.clear()
@@ -72,15 +75,23 @@ const Router  = (props) => {
               path='/signup' 
               component={ props => 
                   <SignUp {...props}/>
-              }/>    
+              }/>
 
-              <ProtectedRoute 
-                authenticated={authenticated}
-                currentUser={currentUser}
-                exact path='/board'
-                component={props=><MyBoards {...props}/>}
-              />
+              <ProtectedRoute
+               authenticated={authenticated}
+               currentUser={currentUser}  
+              exact path='/board' 
+              component={ props => 
+                  <MyBoards {...props}/>
+              }/> 
 
+              <ProtectedRoute
+               authenticated={authenticated}
+               currentUser={currentUser}  
+              exact path='/new-board' 
+              component={ props => 
+                  <NewBoard {...props}/>
+              }/>   
 
               <ProtectedRoute
                authenticated={authenticated}

@@ -1,8 +1,6 @@
 import React from 'react'
 
-const MyBoards = ()=>{
-
-
+const MyBoards = (props)=>{
     return(
         <div>
             <h1>Boards</h1>
