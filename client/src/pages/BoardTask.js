@@ -37,11 +37,11 @@ const BoardTask = ()=>{
             <h1>hello</h1>
             <DragDropContext  onDragEnd>
                 {tasks.map(task=>{
-                    if(steps.tasks_id === tasks.id){
+                    
                         const column = tasks[task];
                         const taskss = steps;
                      return <Column column={column} title={task.name} tasks={taskss}/>
-                     }
+                     
                  })}
             </DragDropContext>
         </div>
