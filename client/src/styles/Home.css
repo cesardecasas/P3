@@ -1,4 +1,4 @@
-img {
+.image {
     height:30px;
     width: auto;
     border-radius: 100%;
@@ -12,7 +12,7 @@ img {
 }
 
 .intro-container {
-    color:white;
+    color:black;
     background-color: rgba(25,220,184,.3);
 }
 
