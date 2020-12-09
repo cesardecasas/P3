@@ -11,10 +11,6 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      task_id: {
-        type: Sequelize.INTEGER
-        
-      },
       user_id: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',

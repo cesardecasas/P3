@@ -10,6 +10,7 @@ import Home from '../pages/Home'
 import MyBoards from '../pages/MyBoards'
 import NewBoard from '../pages/NewBoard'
 
+
 const Router  = (props) => {
 
     const [currentUser,setCurrentUser]=useState(null)
@@ -77,13 +78,14 @@ const Router  = (props) => {
                   <SignUp {...props}/>
               }/>
 
-              <ProtectedRoute
-               authenticated={authenticated}
-               currentUser={currentUser}  
-              exact path='/board' 
-              component={ props => 
-                  <MyBoards {...props}/>
-              }/> 
+
+              <ProtectedRoute 
+                authenticated={authenticated}
+                currentUser={currentUser}
+                exact path='/myboards'
+                component={props=><MyBoards {...props}/>}
+              />
+
 
               <ProtectedRoute
                authenticated={authenticated}
@@ -101,6 +103,15 @@ const Router  = (props) => {
                 <Home {...props} authenticated={authenticated}
                 currentUser={currentUser}  />
                }/>
+
+               <ProtectedRoute 
+               authenticated={authenticated}
+               currentUser={currentUser}
+               exact path='/board'
+               component={props=>
+              <BoardTask {...props} authenticated={authenticated}
+              currentUser={currentUser}/>
+              }/>
 
             </Switch>
        </Layout>

@@ -1,12 +1,10 @@
-
 import ApiClient from './ApiClient'
 
-export const __GetTasks=async(boardId)=>{
+export const __GetSteps =async(taskId)=>{
     try {
-        const res = await ApiClient.get(`/task/${boardId}`)
+        const res = await ApiClient.get(`/step/${taskId}`)
         return res.data
     } catch (error) {
         throw error 
     }
 }
-

@@ -11,7 +11,7 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      task_id: {
+      tasks_id: {
         type: Sequelize.INTEGER
       },
       description: {

@@ -3,13 +3,13 @@ const {Steps} =require('../models')
 
 const createStep = async(req,res)=>{
     try {
-        const task_id = parseInt(req.params.task_id)
+        const tasks_id = parseInt(req.params.task_id)
         const taskBody = {
-            task_id,
+            tasks_id,
             ...req.body 
         }
         const step = await Steps.create(taskBody)
-        res.send(createStep)
+        res.send(step)
     } catch (error) {
         throw error 
     }
@@ -41,7 +41,7 @@ const removeStep=async(req,res)=>{
 const getSteps =async(req,res)=>{
     try {
         const taskId = parseInt(req.params.task_id)
-        const steps = await Steps.findAll({where:{task_id:taskId}})
+        const steps = await Steps.findAll({where:{tasks_id:taskId}})
         res.send(steps)
     } catch (error) {
         throw error 

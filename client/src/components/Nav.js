@@ -18,9 +18,13 @@ const Nav = (props)=>{
                     Home
                 </NavLink >
 
-                <NavLink className="btn btn-outline-primary" exact to='/board'>
+                <NavLink className="btn btn-outline-primary" exact to='/myboards'>
                     My Boards
                 </NavLink>
+                <NavLink className="btn btn-outline-primary" exact to='/board'>
+                    Board
+                </NavLink>
+
                 <NavLink className="btn btn-outline-primary" onClick={() => {
                     localStorage.clear()
                     props.setAuthenticated(false)

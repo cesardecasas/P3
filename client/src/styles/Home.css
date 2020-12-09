@@ -1,4 +1,4 @@
-img {
+.image {
     height:30px;
     width: auto;
     border-radius: 100%;
@@ -12,13 +12,40 @@ img {
 }
 
 .intro-container {
-    color:white;
-    background-color: rgba(25,220,184,.3);
+    color:black;
+    background-color: rgba(25,220,184,.7);
 }
 
 .intro-footer {
     display: flex;
     justify-content: center;   
+}
+
+.joke-container {
+   display: block;
+    word-wrap: break-word;
+ 
+    color: black;
+    width: auto;
+    
+    margin: 40px 120px;
+   
+    border-radius: 10px;
+    
+}
+
+.joke-header {
+    border: 2px solid rgb(19,95,118);
+    border-radius: 10px;
+    background-color:  rgba(25,220,184,.7);
+}
+
+.joke {
+    border: 2px solid rgb(19,95,118) ;
+    border-radius: 10px;
+    background-color:  rgba(25,220,184,.7);
+    
+    max-width:auto;
 }
 
 span {

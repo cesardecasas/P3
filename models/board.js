@@ -15,13 +15,12 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'user_id'
       })
       Board.hasMany(models.Tasks, {
-        foreignKey: 'task_id'
+        foreignKey: 'board_id'
       })
     }
   };
   Board.init({
     name: DataTypes.STRING,
-    task_id: DataTypes.INTEGER,
     user_id: DataTypes.INTEGER
   }, {
     sequelize,
