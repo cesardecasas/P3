@@ -1,13 +1,34 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import logo from '../helpers/PThreeLogo.png'
 import '../styles/Home.css'
+import {GetJokes} from '../services/JokeServices'
+
+
+
+
 
 const Home = (props) => {
-    try{
-      
-    } catch(error){
-        console.log(error)
+   
+    const [jokes, setJokes] =useState('')
+    const [searched, setSearched]=useState(false)
+
+    const redirection = () => {
+        props.history.push('/board')
     }
+
+    const getJokes = async() => {
+        try{
+            const res = await GetJokes()
+            setJokes(res.joke)
+            console.log(res.joke)
+        } catch(error){
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        getJokes()
+    },[searched])
+
     return(
         <div className='entire-container'>
             <div className='intro-container'>
@@ -23,8 +44,24 @@ const Home = (props) => {
                     <img className='image'  src={logo} />
                     <p><strong>Welcome Back, {props.currentUser.name}</strong></p>
                 </div>
-                <a href=''><button>Create a New Board</button></a>
+                <button onClick={()=> redirection()}>Lets Get Started</button>
             </div>
+            <div className='joke-container'>
+               
+                   
+                        <p className='joke-header'>
+                           <strong> Here's a Quick Joke For You!</strong>
+                        </p>
+                    
+                    
+                        <p className='joke'>
+                            <strong>{jokes}</strong>
+                        </p>
+                   
+               
+               
+            </div>
+
         </div>
     )
 }
