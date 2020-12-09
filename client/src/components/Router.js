@@ -8,6 +8,7 @@ import __CheckSession  from '../services/UserServices';
 import Layout from './Layout';
 import Home from '../pages/Home'
 import MyBoards from '../pages/MyBoards'
+import BoardTask from '../pages/BoardTask'
 
 const Router  = (props) => {
 
@@ -77,7 +78,7 @@ const Router  = (props) => {
               <ProtectedRoute 
                 authenticated={authenticated}
                 currentUser={currentUser}
-                exact path='/board'
+                exact path='/myboards'
                 component={props=><MyBoards {...props}/>}
               />
 
@@ -90,6 +91,15 @@ const Router  = (props) => {
                 <Home {...props} authenticated={authenticated}
                 currentUser={currentUser}  />
                }/>
+
+               <ProtectedRoute 
+               authenticated={authenticated}
+               currentUser={currentUser}
+               exact path='/board'
+               component={props=>
+              <BoardTask {...props} authenticated={authenticated}
+              currentUser={currentUser}/>
+              }/>
 
             </Switch>
        </Layout>

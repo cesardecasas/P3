@@ -2,11 +2,11 @@ const {Tasks} =require('../models')
 
 const createTask = async(req,res)=>{
     try {
-        const userId = parseInt(req.params.user_id)
-        const boardId = parseInt(req.params.board_id)
+        const user_id = parseInt(req.params.user_id)
+        const board_id = parseInt(req.params.board_id)
         let TaskBody = {
-            userId,
-            boardId,
+            user_id,
+            board_id,
             ...req.body
         }
         const task = await Tasks.create(TaskBody)
@@ -19,7 +19,7 @@ const createTask = async(req,res)=>{
 const getTasks = async(req,res)=>{
     try {
         const boardId = parseInt(req.params.board_id)
-        const tasks = await tasks.findAll({where:{board_id:boardId}})
+        const tasks = await Tasks.findAll({where:{board_id:boardId}})
         res.send(tasks)        
     } catch (error) {
         throw error

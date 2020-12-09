@@ -1,10 +1,10 @@
-const {Board} = require('../models/board')
+const {Board} = require('../models')
 
 const createBoard = async(req,res)=>{
     try {
-        const userId = req.params.user_id
+        const user_id = req.params.user_id
         let boardBody = {
-            userId,
+            user_id,
             ...req.body
         }
         const board = await Board.create(boardBody)
@@ -39,7 +39,7 @@ const updateBoard =async(req,res)=>{
 const getBoard = async(req,res)=>{
     try {
         let boardId = parseInt(req.params.board_id)
-        let board = Board.findByPk(boardId)
+        let board = await Board.findByPk(boardId)
         res.send(board)
     } catch (error) {
         throw error
@@ -49,7 +49,8 @@ const getBoard = async(req,res)=>{
 const getUserBoards = async(req,res)=>{
     try {
         let userId = parseInt(req.params.user_id)
-        let board = Board.find({where:{user_id:userId}})
+        let board = await Board.findAll({where:{user_id:userId}})
+        console.log(board)
         res.send(board)
     } catch (error) {
         throw error
