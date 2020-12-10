@@ -40,7 +40,7 @@ const MyBoards = (props)=>{
 
 
     return(
-        <div>
+        <div className= 'title'>
             {boards ? <h1>My Boards</h1> : <h1>Create Your First Board!</h1>}
             {boards.map((board,index)=>{
                 
