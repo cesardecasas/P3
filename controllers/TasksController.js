@@ -32,8 +32,8 @@ const getTasks = async(req,res)=>{
 
 const removeTask =async(req,res)=>{
     try {
+        
         const taskId = parseInt (req.params.task_id)
-        console.log(taskId)
         await Tasks.destroy({where:{id:taskId}})
         res.send({msg:`task with the id of ${taskId} was deleted`})
     } catch (error) {

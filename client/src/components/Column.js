@@ -17,13 +17,23 @@ padding: 8px`
 const TaskList = styled.div`
 padding:8px`
 
-const Column =(props)=>{
+const Button = styled.button`
+width: 80px;
+font-size: 14px;
+border-radius: 0;
+background-color: rgba(255, 255, 255, 0);
+border: none;
+box-shadow: 2px 2px 10px rgba(0, 0, 0, 0);
+color: black;
+`
 
-console.log(props)
+const Column =(props)=>{
+console.log(`column:`,props)
     return(
         
         <Container>
             <Title>{props.column.name}</Title>
+            <Button onClick={()=>props.delete(props.column.id)}>delete</Button>
             <Droppable droppableId={JSON.stringify(props.column.id)}>
                 {(provided)=>(
                 <TaskList 

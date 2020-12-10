@@ -9,7 +9,7 @@ padding: 8px;
 margin-bottom: 8px;`
 
 const Task =(props)=>{
-
+    console.log(`task:`,props)
     return(
         <Draggable draggableId={JSON.stringify(props.task.id)} index={props.index}>
             {(provided)=>(
@@ -18,7 +18,7 @@ const Task =(props)=>{
                 {...provided.draggableProps}
                 {...provided.dragHandleProps} 
                 
-                >{props.task.name}
+                >{props.task.name}: {props.task.description}
                 </Container>
 
             )}

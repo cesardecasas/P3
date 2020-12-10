@@ -18,3 +18,13 @@ export const  __CreateColumn=async(userId,boardId, formData)=>{
         throw error
     }
 }
+
+
+export const __DeleteColumn =async(taskId)=>{
+    try {
+        
+        const res =await ApiClient.delete(`/task/${taskId}`)
+    } catch (error) {
+        throw error 
+    }
+}

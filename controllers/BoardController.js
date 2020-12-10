@@ -40,7 +40,10 @@ const updateBoard =async(req,res)=>{
 const getBoard = async(req,res)=>{
     try {
         let boardId = parseInt(req.params.board_id)
-        let board = await Board.findByPk(boardId)
+        let board = await Board.findAll({
+            where:{id:boardId},
+            include:[{model: Tasks}]
+        })
         res.send(board)
     } catch (error) {
         throw error

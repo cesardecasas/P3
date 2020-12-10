@@ -11,6 +11,7 @@ import MyBoards from '../pages/MyBoards'
 import NewBoard from '../pages/NewBoard'
 import BoardTask from '../pages/BoardTask'
 import UpdateBoard from '../pages/UpdateBoard'
+import CreateTask from '../pages/CreateTask' 
 
 
 
@@ -109,6 +110,14 @@ const Router  = (props) => {
                   location={props.location}
                   />
               }/>   
+
+              <ProtectedRoute
+               authenticated={authenticated}
+               currentUser={currentUser}  
+              exact path='/create/task' 
+              component={ props => 
+                  <CreateTask {...props}/>
+              }/>  
 
               <ProtectedRoute
                authenticated={authenticated}
