@@ -65,7 +65,10 @@ const getRecentBoards = async(req,res)=>{
         let userId = parseInt(req.params.user_id)
         let board = await Board.findAll({
             where:{user_id:userId},
-            include:[{model: Tasks}]
+            include:[{model: Tasks}],
+            order: [[ 'updatedAt', 'DESC']],
+            limit: 3
+
         })
         console.log(board)
         res.send(board)
