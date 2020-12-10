@@ -26,9 +26,10 @@ const Router  = (props) => {
         if (token) {
           try {
             const session = await __CheckSession()
-            console.log('session', session)
+            
             setAuthenticated(true)
             setCurrentUser(session.user)
+            localStorage.setItem('user',JSON.stringify(session.user));
             console.log(session.user);
             a()
             

@@ -21,8 +21,8 @@ const Nav = (props)=>{
                 <NavLink className="btn btn-outline-primary" exact to='/myboards'>
                     My Boards
                 </NavLink>
-                <NavLink className="btn btn-outline-primary" exact to='/board'>
-                    Board
+                <NavLink className="btn btn-outline-primary" exact to='/new-board'>
+                    Create board
                 </NavLink>
 
                 <NavLink className="btn btn-outline-primary" onClick={() => {

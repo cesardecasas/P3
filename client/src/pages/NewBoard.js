@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import TextInput from '../components/TextInput'
-import __CreateBoard from '../services/BoardServices'
+import {__CreateBoard} from '../services/BoardServices'
+import '../styles/Boards.css'
 
 const NewBoard = (props)=>{
     const [ boardName,setBoardName]=useState('')
-   //const [formError,setFormError]=useState(false)
+    const [formError,setFormError]=useState(false)
 
     const handleChangeB =({target})=>{
         setBoardName(target.value)
@@ -13,19 +14,27 @@ const NewBoard = (props)=>{
     const handleSubmit = async (e) => {
         e.preventDefault()
         try{
-           const res =  await __CreateBoard({name:boardName} );
+            if(!boardName){
+                setFormError(true);
+                return;
+            }
+            const {id} = JSON.parse(localStorage.getItem('user'));
+            const res =  await __CreateBoard({name:boardName},id);
+            props.history.push('/myboards');
+          
         }catch (error) {
-            throw error
+            setFormError(true);
         }
     }
 
     return(
         <div>
-            <div class="card">
+            <div class="card card-sm">
                 <div class="card-header">
                     New board
                 </div>
                 <div class="card-body">
+                    {formError ? <p className='alert alert-danger'>Board name required</p>:<p></p>}
                     <form className='form flex-col box' onSubmit={handleSubmit}>
                         <TextInput
                             placeholder='Board name'
@@ -34,7 +43,7 @@ const NewBoard = (props)=>{
                             value={boardName}
                             onChange={handleChangeB}
                         />
-                        <button className='button'>Create</button>
+                        <button className='button mt-2'>Create</button>
                     </form>
                 </div>
             </div>
