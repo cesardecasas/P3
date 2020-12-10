@@ -20,11 +20,12 @@ console.log(props)
     return(
         
         <Container>
-            <Title>{props.title}</Title>
-            <Droppable droppableId={props.column}>
+            <Title>{props.column.name}</Title>
+            <Droppable droppableId={props.column.id}>
                 {(provided)=>(
                 <TaskList innerRef={provided.innerRef} {...provided.droppableProps}>
-                    {props.tasks.map((task, index)=><Task key={task.tasks_id} task={task} index={index}/>)}
+                    {props.tasks.map((task, index)=>
+                        <Task key={task.id} task={task} index={index}/>)}
                     {provided.placeholder}
                 </TaskList>
                 )}

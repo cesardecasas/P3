@@ -11,7 +11,7 @@ margin-bottom: 8px;`
 const Task =(props)=>{
 
     return(
-        <Draggable draggableId={props.task.tasks_id} index={props.index}>
+        <Draggable draggableId={props.task.id} index={props.index}>
             {(provided)=>(
                 <Container {...provided.dragHandleProps} {...provided.draggableProps}
                 innerRef={provided.innerRef}

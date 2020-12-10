@@ -9,6 +9,7 @@ const BoardTask = ()=>{
 
     const [tasks, setTasks]=useState([])
     const [steps, setSteps]=useState([])
+    const [columns, setColumns]= useState([])
     const [inf, setInf]=useState(false)
 
 
@@ -18,7 +19,7 @@ const BoardTask = ()=>{
             const description = await __GetSteps(1)
             setSteps(description)
             setTasks(columns)
-            console.log('ready')
+            setColumns([tasks.length])
         } catch (error) {
             throw error 
         }
@@ -31,21 +32,22 @@ const BoardTask = ()=>{
     useEffect(()=>{
         getInf()
     },[inf])
-   
-    return(
+    console.log(tasks)
+    return tasks && steps ? (
         <div>
             <h1>hello</h1>
-            <DragDropContext  onDragEnd>
-                {tasks.map(task=>{
+            <DragDropContext  onDragEnd={onDragEnd}>
+                {columns.map(columnId=>{
                     
-                        const column = tasks[task];
-                        const taskss = steps;
-                     return <Column column={column} title={task.name} tasks={taskss}/>
+                        const column = tasks[columnId];
+                        console.log(column);
+                        const taskss = column.Steps.map(taskId=>steps[taskId]);
+                     return <Column column={column} tasks={taskss} key={column.id}/>
                      
                  })}
             </DragDropContext>
         </div>
-    )
+    ) : <h1>Loading...</h1> 
 }
 
 export default BoardTask
