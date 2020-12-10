@@ -37,9 +37,9 @@ export const __CreateBoard = async (formData, userId) => {
   }
 }
 
-export const __UpdateBoard = async (formData, boardId) => {
+export const __UpdateBoard = async (bordName, boardId) => {
   try {
-    const res = await ApiClient.put(`/board/${boardId}`, formData)
+    const res = await ApiClient.put(`/board/${boardId}`, bordName)
     return res.data
   } catch (error) {
     throw error

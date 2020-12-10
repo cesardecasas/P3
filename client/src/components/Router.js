@@ -104,8 +104,10 @@ const Router  = (props) => {
                authenticated={authenticated}
                currentUser={currentUser}  
               exact path='/update-board' 
-              component={ props => 
-                  <UpdateBoard {...props}/>
+              render={ props => 
+                  <UpdateBoard {...props} 
+                  location={props.location}
+                  />
               }/>   
 
               <ProtectedRoute

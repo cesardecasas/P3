@@ -5,11 +5,11 @@ import '../styles/Boards.css'
 
 
 const UpdateBoard = (props)=>{
-    const [ boardName,setBoardName]=useState('')
+    const [ boardName,setboardName]=useState('')
     const [formError,setFormError]=useState(false)
 
     const handleChangeB =({target})=>{
-        setBoardName(target.value)
+        setboardName(target.value)
     }
 
     const handleSubmit = async (e) => {
@@ -19,8 +19,9 @@ const UpdateBoard = (props)=>{
                 setFormError(true);
                 return;
             }
-            const {id} = JSON.parse(localStorage.getItem('user'));
-            const res =  await __UpdateBoard({name:boardName},id);
+            console.log(boardName)
+            const id = props.location.state
+            const res =  await __UpdateBoard(boardName, id);
             props.history.push('/myboards');
           
         }catch (error) {

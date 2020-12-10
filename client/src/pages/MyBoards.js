@@ -48,6 +48,10 @@ const MyBoards = (props)=>{
                     pathname:'/board',
                     state:board
                 }
+                let location2 = {
+                    pathname: '/update-board',
+                    state:board.id
+                }
 
                 return board.Tasks.length >= 1 ?(   
                         <div class="card text-dark bg-info mb-3" style={{maxWidth: `18rem`}}>
@@ -69,7 +73,11 @@ const MyBoards = (props)=>{
                         </Link>
                         
                         <button className='delete' onClick = {()=> DeleteBoard(board.id)}>delete</button>
-                        <button className='delete' onClick = {()=> UpdateBoard()} > update</button>
+                        <Link to={location2} key={board.name}>
+                            
+            
+                        <button className='delete' onClick = {()=> UpdateBoard(board.id)} > update</button>
+                        </Link>
                         <div className="card-body">
                             <h5 className="card-title">Columns Name</h5>
                             {board.Tasks.map(task=><p className='card-text'>{task.name}</p>)}
