@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {__GetBoards} from '../services/BoardServices'
 import {Link} from 'react-router-dom'
+import '../styles/MyBoard.css'
 
 const MyBoards = (props)=>{
 
@@ -35,8 +36,10 @@ const MyBoards = (props)=>{
                         <Link to={location} key={board.name}>
                             <h3 class="card-header">{board.name}</h3>
                         </Link>
+                        <button className='delete'>delete</button>
+                        <button className='delete'>update</button>
                         <div class="card-body">
-                            <h5 class="card-title">Columns Info</h5>
+                            <h5 class="card-title">Columns Name</h5>
                             {board.Tasks.map(task=><p className='card-text'>{task.name}</p>)}
                         </div>
                     </div>
