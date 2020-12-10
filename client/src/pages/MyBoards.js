@@ -53,6 +53,7 @@ const MyBoards = (props)=>{
                     </div>
                 )
             })}
+
         </div>
     )
 }

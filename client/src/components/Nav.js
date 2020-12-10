@@ -22,6 +22,8 @@ const Nav = (props)=>{
                     My Boards
                 </NavLink>
 
+
+
                 <NavLink className="btn btn-outline-primary" onClick={() => {
                     localStorage.clear()
                     props.setAuthenticated(false)
