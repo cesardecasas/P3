@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import TextInput from '../components/TextInput'
-import __CreateBoard from '../services/BoardServices'
+import {__CreateBoard} from '../services/BoardServices'
 
 const NewBoard = (props)=>{
     const [ boardName,setBoardName]=useState('')

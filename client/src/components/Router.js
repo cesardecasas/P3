@@ -84,7 +84,8 @@ const Router  = (props) => {
                 authenticated={authenticated}
                 currentUser={currentUser}
                 exact path='/myboards'
-                component={props=><MyBoards {...props}/>}
+                component={props=><MyBoards {...props} authenticated={authenticated}
+                currentUser={currentUser}/>}
               />
 
 
@@ -109,9 +110,12 @@ const Router  = (props) => {
                authenticated={authenticated}
                currentUser={currentUser}
                exact path='/board'
-               component={props=>
-              <BoardTask {...props} authenticated={authenticated}
-              currentUser={currentUser}/>
+               render={props=>
+              <BoardTask {...props} 
+                authenticated={authenticated}
+                currentUser={currentUser}
+                location={props.location}
+              />
               }/>
 
             </Switch>

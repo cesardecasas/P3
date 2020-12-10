@@ -5,7 +5,7 @@ import Column from '../components/Column'
 import '@atlaskit/css-reset'
 import { DragDropContext} from 'react-beautiful-dnd'
 
-const BoardTask = ()=>{
+const BoardTask = (props)=>{
 
     const [tasks, setTasks]=useState([])
     const [steps, setSteps]=useState([])
@@ -15,8 +15,8 @@ const BoardTask = ()=>{
 
     const getInf =async()=>{
         try {
-            const columns = await __GetTasks(1)
-            const description = await __GetSteps(1)
+            const columns = await __GetTasks(props.location.state.id)
+            const description = await __GetSteps(props.location.state.Tasks[0].id)
             setSteps(description)
             setTasks(columns)
             setColumns([tasks.length])
@@ -32,7 +32,8 @@ const BoardTask = ()=>{
     useEffect(()=>{
         getInf()
     },[inf])
-    console.log(tasks)
+
+
     return tasks && steps ? (
         <div>
             <h1>hello</h1>
@@ -40,8 +41,8 @@ const BoardTask = ()=>{
                 {columns.map(columnId=>{
                     
                         const column = tasks[columnId];
-                        console.log(column);
-                        const taskss = column.Steps.map(taskId=>steps[taskId]);
+                        const taskss = column.Steps.map(taskId=>taskId);
+                        console.log(`column`,taskss);
                      return <Column column={column} tasks={taskss} key={column.id}/>
                      
                  })}
