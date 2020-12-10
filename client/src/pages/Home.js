@@ -13,7 +13,7 @@ const Home = (props) => {
     const [searched, setSearched]=useState(false)
 
     const redirection = () => {
-        props.history.push('/board')
+        props.history.push('/myboards')
     }
 
     const getJokes = async() => {
