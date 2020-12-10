@@ -21,7 +21,7 @@ const UpdateBoard = (props)=>{
             }
             console.log(boardName)
             const id = props.location.state
-            const res =  await __UpdateBoard(boardName, id);
+            const res =  await __UpdateBoard({name:boardName}, id);
             props.history.push('/myboards');
           
         }catch (error) {

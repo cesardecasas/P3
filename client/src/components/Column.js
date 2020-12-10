@@ -8,7 +8,7 @@ margin: 8px;
 border: 1px solid lightgrey;
 border-radius:2px;
 width: 400px;
-background-color: rgba(255, 255, 255, 0.655);
+background-color: rgba(255, 255, 255, 0.755);
 `
 
 const Title = styled.h3`

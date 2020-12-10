@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import {__GetSteps} from '../services/StepServices'
-import {__GetTasks} from '../services/TaskServices'
+import {__GetTasks,__CreateColumn} from '../services/TaskServices'
 import Column from '../components/Column'
 import '@atlaskit/css-reset'
 import { DragDropContext} from 'react-beautiful-dnd'
+import '../styles/Boards.css'
 
 const BoardTask = (props)=>{
 
@@ -25,6 +26,14 @@ const BoardTask = (props)=>{
         }
     }
 
+    const createColumn =async()=>{
+        try {
+            const newColumn = await __CreateColumn()
+        } catch (error) {
+            throw error
+        }
+    }
+
     const  onDragEnd= result=>{
 
     }
@@ -35,8 +44,8 @@ const BoardTask = (props)=>{
 
 
     return tasks && steps ? (
-        <div>
-            <h1>hello</h1>
+        <div className='main'>
+            <h1>{props.location.state.name}</h1>
             <DragDropContext  onDragEnd={onDragEnd}>
                 {columns.map(columnId=>{
                     
@@ -47,6 +56,7 @@ const BoardTask = (props)=>{
                      
                  })}
             </DragDropContext>
+            <button className='Add'>+</button>
         </div>
     ) : <h1>Loading...</h1> 
 }

@@ -39,6 +39,7 @@ export const __CreateBoard = async (formData, userId) => {
 
 export const __UpdateBoard = async (bordName, boardId) => {
   try {
+    console.log(bordName)
     const res = await ApiClient.put(`/board/${boardId}`, bordName)
     return res.data
   } catch (error) {
