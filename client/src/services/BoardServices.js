@@ -46,4 +46,12 @@ export const __UpdateBoard = async (formData, boardId) => {
   }
 }
 
-
+export const __DeleteBoard = async(boardId) => {
+  try {
+    const res = await ApiClient.delete(`/board/${boardId}`)
+    return res.data
+  }
+  catch (error) {
+    throw error
+  }
+}

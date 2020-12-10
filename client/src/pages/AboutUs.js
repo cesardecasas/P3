@@ -21,15 +21,13 @@ export default () => {
           task into steps.</p>
         </p>
       </div>
-        <div className="hero-action">
-          <Link to="/signup">Get Started</Link>
+      <div className="hero-action">
+        <Link to="/signup">Get Started</Link>
+      </div>
 
-        </div>
-
-        <div className='a'>
-          <Carousel/>
-
-        </div>
+      <div className='a'>
+        <Carousel/>
+      </div>
 </div>
 
   )

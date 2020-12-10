@@ -6,6 +6,7 @@ Router.delete('/:board_id', controller.deleteBoard)
 Router.put('/:board_id', controller.updateBoard)
 Router.get('/:board_id', controller.getBoard)
 Router.get('/user/:user_id', controller.getUserBoards)
+Router.get('/poops/:user_id', controller.getRecentBoards )
 
 
 module.exports = Router

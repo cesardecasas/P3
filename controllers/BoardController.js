@@ -60,11 +60,26 @@ const getUserBoards = async(req,res)=>{
     }
 }
 
+const getRecentBoards = async(req,res)=>{
+    try {
+        let userId = parseInt(req.params.user_id)
+        let board = await Board.findAll({
+            where:{user_id:userId},
+            include:[{model: Tasks}]
+        })
+        console.log(board)
+        res.send(board)
+    } catch (error) {
+        throw error
+    }
+}
+
 module.exports = {
     createBoard,
     deleteBoard,
     updateBoard,
     getBoard,
-    getUserBoards
+    getUserBoards,
+    getRecentBoards
 
 }
