@@ -42,49 +42,55 @@ const MyBoards = (props)=>{
     return(
         <div className= 'title'>
             {boards ? <h1>My Boards</h1> : <h1>Create Your First Board!</h1>}
-            {boards.map((board,index)=>{
-                
-                let location ={
-                    pathname:'/board',
-                    state:board
-                }
-                let location2 = {
-                    pathname: '/update-board',
-                    state:board.id
-                }
+            <div className='crd-container'>
+                    {boards.map((board,index)=>{
+                        
+                        let location ={
+                            pathname:'/board',
+                            state:board
+                        }
+                        let location2 = {
+                            pathname: '/update-board',
+                            state:board.id
+                        }
 
-                return board.Tasks.length >= 1 ?(   
-                        <div class="card text-dark bg-info mb-3" style={{maxWidth: `18rem`}}>
-                        <Link to={location} key={board.name}>
-                            <h3 class="card-header">{board.name}</h3>
-                        </Link>
-                        
-                        <button className='delete' onClick = {()=> DeleteBoard(board.id)}>delete</button>
-                        <button className='delete' onClick = {()=> UpdateBoard()} > update</button>
-                        <div class="card-body">
-                            <h5 class="card-title">Columns Name</h5>
-                            {board.Tasks.map(task=><p className='card-text'>{task.name}</p>)}
-                        </div>
-                    </div>
-                ):(
-                    <div className="card text-dark bg-secondary mb-3" style={{maxWidth: `18rem`}}>
-                        <Link to={location} key={board.name}>
-                            <h3 className="card-header">{board.name}</h3>
-                        </Link>
-                        
-                        <button className='delete' onClick = {()=> DeleteBoard(board.id)}>delete</button>
-                        <Link to={location2} key={board.name}>
+                        return board.Tasks.length >= 1 ?(   
+                           
+                                <div className="card text-dark bg-info mb-3" style={{maxWidth: `18rem`}}>
+                                <Link to={location} key={board.name}>
+                                    <h3 class="card-header">{board.name}</h3>
+                                </Link>
+                                
+                                <button className='delete' onClick = {()=> DeleteBoard(board.id)}>delete</button>
+                                <button className='delete' onClick = {()=> UpdateBoard()} > update</button>
+                                <div class="card-body">
+                                    <h5 class="card-title">Columns Name</h5>
+                                    {board.Tasks.map(task=><p className='card-text'>{task.name}</p>)}
+                                </div>
+                                </div>
                             
-            
-                        <button className='delete' onClick = {()=> UpdateBoard(board.id)} > update</button>
-                        </Link>
-                        <div className="card-body">
-                            <h5 className="card-title">Columns Name</h5>
-                            {board.Tasks.map(task=><p className='card-text'>{task.name}</p>)}
-                        </div>
-                    </div>
-                )
-            })}
+                        ):(
+                           
+                                <div className="card text-dark bg-secondary mb-3" style={{maxWidth: `18rem`}}>
+                                    <Link to={location} key={board.name}>
+                                        <h3 className="card-header">{board.name}</h3>
+                                    </Link>
+                                    
+                                    <button className='delete' onClick = {()=> DeleteBoard(board.id)}>delete</button>
+                                    <Link to={location2} key={board.name}>
+                                        
+                        
+                                    <button className='delete' onClick = {()=> UpdateBoard(board.id)} > update</button>
+                                    </Link>
+                                    <div className="card-body">
+                                        <h5 className="card-title">Columns Name</h5>
+                                        {board.Tasks.map(task=><p className='card-text'>{task.name}</p>)}
+                                    </div>
+                                </div>
+                               
+                        )
+                    })}
+                </div>
                  <button className ='create' onClick = {()=> CreateBoard()}>create board</button>
         </div>
     )

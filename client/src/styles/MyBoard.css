@@ -6,3 +6,9 @@
     border: none;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0);
 }
+
+.crd-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
