@@ -1,4 +1,5 @@
-const {Tasks} =require('../models')
+const {Tasks, Steps} =require('../models')
+
 
 const createTask = async(req,res)=>{
     try {
@@ -19,7 +20,10 @@ const createTask = async(req,res)=>{
 const getTasks = async(req,res)=>{
     try {
         const boardId = parseInt(req.params.board_id)
-        const tasks = await Tasks.findAll({where:{board_id:boardId}})
+        const tasks = await Tasks.findAll({
+            where:{board_id:boardId},
+            include:[{model: Steps}]
+        })
         res.send(tasks)        
     } catch (error) {
         throw error
@@ -28,9 +32,10 @@ const getTasks = async(req,res)=>{
 
 const removeTask =async(req,res)=>{
     try {
-        const taskId = parseInt(req.res.task_id)
+        const taskId = parseInt (req.params.task_id)
+        console.log(taskId)
         await Tasks.destroy({where:{id:taskId}})
-        res.send({masg:`task with the id of ${taskId} was deleted`})
+        res.send({msg:`task with the id of ${taskId} was deleted`})
     } catch (error) {
         throw error
     }

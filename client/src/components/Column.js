@@ -6,7 +6,9 @@ import {Droppable} from 'react-beautiful-dnd'
 const Container = styled.div`
 margin: 8px;
 border: 1px solid lightgrey;
-border-radius:2px`
+border-radius:2px;
+width: 400px;
+`
 
 const Title = styled.h3`
 padding: 8px`
@@ -20,11 +22,14 @@ console.log(props)
     return(
         
         <Container>
-            <Title>{props.title}</Title>
-            <Droppable droppableId={props.column}>
+            <Title>{props.column.name}</Title>
+            <Droppable droppableId={JSON.stringify(props.column.id)}>
                 {(provided)=>(
-                <TaskList innerRef={provided.innerRef} {...provided.droppableProps}>
-                    {props.tasks.map((task, index)=><Task key={task.tasks_id} task={task} index={index}/>)}
+                <TaskList 
+                innerRef={provided.innerRef()} 
+                {...provided.droppableProps}>
+                    {props.tasks.map((task, index)=>
+                        <Task key={index} task={task} index={index}/>)}
                     {provided.placeholder}
                 </TaskList>
                 )}

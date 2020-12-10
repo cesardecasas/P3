@@ -3,7 +3,7 @@ import ApiClient from './ApiClient'
 
 export const __GetBoards =async(boardId)=>{
     try {
-        const res = await ApiClient.get(`/board/${boardId}`)
+        const res = await ApiClient.get(`/board/user/${boardId}`)
         return res.data
     } catch (error) {
         throw error 

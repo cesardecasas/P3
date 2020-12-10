@@ -1,4 +1,4 @@
-const {Board} = require('../models')
+const {Board, Tasks} = require('../models')
 
 const createBoard = async(req,res)=>{
     try {
@@ -49,7 +49,10 @@ const getBoard = async(req,res)=>{
 const getUserBoards = async(req,res)=>{
     try {
         let userId = parseInt(req.params.user_id)
-        let board = await Board.findAll({where:{user_id:userId}})
+        let board = await Board.findAll({
+            where:{user_id:userId},
+            include:[{model: Tasks}]
+        })
         console.log(board)
         res.send(board)
     } catch (error) {
