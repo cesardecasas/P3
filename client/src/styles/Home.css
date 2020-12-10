@@ -48,6 +48,11 @@
     max-width:auto;
 }
 
+.recent-boards {
+    display: flex;
+    justify-content: space-around;
+}
+
 span {
     margin: 5px;
 }
