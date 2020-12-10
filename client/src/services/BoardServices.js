@@ -1,4 +1,4 @@
- import ApiClient from './ApiClient'
+import ApiClient from './ApiClient'
 
 
 export const __GetBoards =async(boardId)=>{
@@ -8,6 +8,15 @@ export const __GetBoards =async(boardId)=>{
     } catch (error) {
         throw error 
     }
+}
+
+export const __GetBoardsUser =async(userId)=>{
+  try {
+      const res = await ApiClient.get(`/board/user/${userId}`)
+      return res.data
+  } catch (error) {
+      throw error 
+  }
 }
 
 export const __CreateBoard = async (formData, userId) => {
