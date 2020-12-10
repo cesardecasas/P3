@@ -19,6 +19,15 @@ export const __GetBoardsUser =async(userId)=>{
   }
 }
 
+export const __GetRecentBoards =async(userId)=>{
+  try {
+      const res = await ApiClient.get(`/board/poops/${userId}`)
+      return res.data
+  } catch (error) {
+      throw error 
+  }
+}
+
 export const __CreateBoard = async (formData, userId) => {
     try {
       const res = await ApiClient.post(`/board/${userId}`, formData)

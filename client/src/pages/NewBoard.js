@@ -30,11 +30,11 @@ const NewBoard = (props)=>{
 
     return(
         <div>
-            <div class="card card-sm">
-                <div class="card-header">
+            <div className="card card-sm">
+                <div className="card-header">
                     New board
                 </div>
-                <div class="card-body">
+                <div className="card-body">
                     {formError ? <p className='alert alert-danger'>Board name required</p>:<p></p>}
                     <form className='form flex-col box' onSubmit={handleSubmit}>
                         <TextInput
