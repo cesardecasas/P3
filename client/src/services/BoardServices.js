@@ -1,32 +1,40 @@
-import axios from 'axios';
-import ApiClient from './ApiClient'
+ import ApiClient from './ApiClient'
 
-const service = {
-    Boards: `${ApiClient}/board`
+
+export const __GetBoards =async(boardId)=>{
+    try {
+        const res = await ApiClient.get(`/board/${boardId}`)
+        return res.data
+    } catch (error) {
+        throw error 
+    }
+}
+
+export const __CreateBoard = async (formData, userId) => {
+    try {
+      const res = await ApiClient.post(`/board/${userId}`, formData)
+      return res.data
+    } catch (error) {
+      throw error
+    }
+}
+
+ export const __GetBoard = async (boardId) => {
+  try {
+    const res = await ApiClient.get(`/board/${boardId}`)
+    return res.data
+  } catch (error) {
+    throw error
   }
+}
 
-const BoardService = {
-    
-    get:async ()=>{
-        const res = await  axios.get(service.Boards);
-        return res;
-    },
-    getById:async (boardId)=>{
-        const res = await  axios.get(`${service.Boards}/${boardId}`);
-        return res;
-    },
-    delete:async (boardId)=>{
-        const res = await  axios.delete(`${service.Boards}/${boardId}`);
-        return res;
-    },
-    create: async (data)=>{
-        const res = await  axios.post(service.Boards,data);
-        return res;
-    },
-    update:async (boardId,data)=>{
-        const res = await  axios.put(`${service.Boards}/${boardId}`,data);
-        return res;
-    },
-};
+export const __UpdateBoard = async (formData, boardId) => {
+  try {
+    const res = await ApiClient.put(`/board/${boardId}`, formData)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
 
-export default BoardService;
+

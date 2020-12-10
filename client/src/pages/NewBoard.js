@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import TextInput from '../components/TextInput'
-import BoardServices from '../services/BoardServices.js';
+import __CreateBoard from '../services/BoardServices'
 
 const NewBoard = (props)=>{
     const [ boardName,setBoardName]=useState('')
-    const [formError, setFormError]=useState(false)
+   //const [formError,setFormError]=useState(false)
 
     const handleChangeB =({target})=>{
         setBoardName(target.value)
@@ -13,9 +13,9 @@ const NewBoard = (props)=>{
     const handleSubmit = async (e) => {
         e.preventDefault()
         try{
-           const res =  await BoardServices.create();
+           const res =  await __CreateBoard({name:boardName} );
         }catch (error) {
-            setFormError(true)
+            throw error
         }
     }
 
