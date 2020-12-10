@@ -10,6 +10,8 @@ import Home from '../pages/Home'
 import MyBoards from '../pages/MyBoards'
 import NewBoard from '../pages/NewBoard'
 import BoardTask from '../pages/BoardTask'
+import UpdateBoard from '../pages/UpdateBoard'
+
 
 
 const Router  = (props) => {
@@ -96,6 +98,14 @@ const Router  = (props) => {
               exact path='/new-board' 
               component={ props => 
                   <NewBoard {...props}/>
+              }/>   
+
+              <ProtectedRoute
+               authenticated={authenticated}
+               currentUser={currentUser}  
+              exact path='/update-board' 
+              component={ props => 
+                  <UpdateBoard {...props}/>
               }/>   
 
               <ProtectedRoute

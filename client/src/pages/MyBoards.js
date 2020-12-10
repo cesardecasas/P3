@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {__GetBoards} from '../services/BoardServices'
+import {__GetBoards, __DeleteBoard} from '../services/BoardServices'
 import {Link} from 'react-router-dom'
 import '../styles/MyBoard.css'
 
@@ -7,6 +7,7 @@ const MyBoards = (props)=>{
 
     const [boards,setBoards]=useState([])
     const [get, setGet]=useState(false)
+
 
     const getBoards =async()=>{
         try {
@@ -16,10 +17,27 @@ const MyBoards = (props)=>{
             throw error 
         }
     }
+    const CreateBoard = () => {
+        props.history.push('/new-board')
+    }
+    const DeleteBoard = async (boardId) => {
+        try {
+            const deleteBoard = await __DeleteBoard(boardId)
+            props.history.push('/myboards')
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+    const UpdateBoard = () => {
+        props.history.push('/update-board')
+    }
 
     useEffect(()=>{
         getBoards()
     },[get])
+
+
 
     return(
         <div>
@@ -32,28 +50,34 @@ const MyBoards = (props)=>{
                 }
 
                 return board.Tasks.length >= 1 ?(   
-                    <div class="card text-dark bg-info mb-3" style={{maxWidth: `18rem`}}>
+                        <div class="card text-dark bg-info mb-3" style={{maxWidth: `18rem`}}>
                         <Link to={location} key={board.name}>
                             <h3 class="card-header">{board.name}</h3>
                         </Link>
-                        <button className='delete'>delete</button>
-                        <button className='delete'>update</button>
+                        
+                        <button className='delete' onClick = {()=> DeleteBoard(board.id)}>delete</button>
+                        <button className='delete' onClick = {()=> UpdateBoard()} > update</button>
                         <div class="card-body">
                             <h5 class="card-title">Columns Name</h5>
                             {board.Tasks.map(task=><p className='card-text'>{task.name}</p>)}
                         </div>
                     </div>
                 ):(
-                    <div class="card text-dark bg-secondary mb-3" style={{maxWidth: `18rem`}}>
-                        <h3 class="card-header">{board.name}</h3>
-                        <div class="card-body">
-                            <h5 class="card-title">Info card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <div className="card text-dark bg-secondary mb-3" style={{maxWidth: `18rem`}}>
+                        <Link to={location} key={board.name}>
+                            <h3 className="card-header">{board.name}</h3>
+                        </Link>
+                        
+                        <button className='delete' onClick = {()=> DeleteBoard(board.id)}>delete</button>
+                        <button className='delete' onClick = {()=> UpdateBoard()} > update</button>
+                        <div className="card-body">
+                            <h5 className="card-title">Columns Name</h5>
+                            {board.Tasks.map(task=><p className='card-text'>{task.name}</p>)}
                         </div>
                     </div>
                 )
             })}
-
+                 <button className ='create' onClick = {()=> CreateBoard()}>create board</button>
         </div>
     )
 }
