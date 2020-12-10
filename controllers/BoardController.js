@@ -26,6 +26,7 @@ const deleteBoard = async(req,res)=>{
 const updateBoard =async(req,res)=>{
     try {
         let boardId = parseInt(req.params.board_id)
+        console.log(req.body)
         let updatedBoard = await Board.update(req.body,{
             where:{id:boardId},
             returning:true

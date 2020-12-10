@@ -10,3 +10,11 @@ export const __GetTasks=async(boardId)=>{
     }
 }
 
+export const  __CreateColumn=async(userId,boardId, formData)=>{
+    try {
+        const res = await ApiClient.post(`/task/${userId}/${boardId}`, formData)
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}
