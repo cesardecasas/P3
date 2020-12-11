@@ -66,6 +66,7 @@ const BoardTask = (props)=>{
 
 
     return tasks ? (
+
         <div className='main'>
             <h1>{props.location.state.name}</h1>
             
@@ -99,8 +100,10 @@ const BoardTask = (props)=>{
                          </div>
                      )
                      
+
                  }):<p></p>}
             
+
             <Link to={location} key={props.location.state.id}>
                 <button className='Add'>+</button>
             </Link>
