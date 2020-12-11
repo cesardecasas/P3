@@ -14,14 +14,13 @@ export default (props) => {
     <div className='main-container'>
         <div className="intro-container">
           <div className="hero-message">
-            <h1>Welcome to the Board!<img className='logo-image' src={logo} /> </h1>
+            <h1>Welcome to Sticky Boards!<img className='logo-image' src={logo} /> </h1>
           </div> 
           <div className='text-container'>
-           <strong><p>The Board is an easy-to-use work load organizer.</p></strong>
+           <strong><p>Sticky Boards is an easy-to-use work load organizer.</p></strong>
             <br />
-            Start living the life you want. Get Organized and start
-            accomplishing your goals today!<br />
-            Make Boards with to do lists, and divide the task into steps.
+           <strong><p> Start living the life you want. Get Organized and start accomplishing your goals today!<br />
+            Make Boards with to do lists, and divide the task into steps. </p></strong>
           </div>
         </div>
 
