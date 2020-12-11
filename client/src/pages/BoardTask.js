@@ -17,8 +17,9 @@ const BoardTask = (props)=>{
                 
                 const columns = await __GetTasks(props.location.state.id)
                 setTasks(columns)
-                for(let i=0;i<= tasks.length ; i++){
+                for(let i=0;i< tasks.length+1 ; i++){
                     setColumns([i]) 
+                    
                 }
                 
            
@@ -73,8 +74,8 @@ const BoardTask = (props)=>{
                 {props.location.state.Tasks[0] ? columns.map((columnId, index)=>{
                         console.log(`h`,columnId)
                         const column = tasks[columnId];
-                        const taskss = column.Steps.map(taskId=>taskId);
                         console.log(column)
+                        const taskss = column.Steps.map(taskId=>taskId);
                      return(
                          <div className='container' key={index}>
                              <h3 className='name'>{column.name}</h3>
