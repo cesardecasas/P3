@@ -80,19 +80,9 @@ const Home = (props) => {
                     <img className='logo-image'  src={logo} />
                     <p><strong>Welcome Back, {props.currentUser.name}</strong></p>
                 </div>
-                <button onClick={()=> redirection()}>Lets Get Started</button>
+                <button onClick={()=> redirection()}>Lets Make A Board!</button>
             </div>
-            <div className='joke-container'>
-               
-                   
-                        
-                    
-                    
-                       
-                   
-               
-               
-            </div>
+            
             <div className='recent-boards'>
                     {boards.map((board,index)=>{
                         
@@ -133,12 +123,15 @@ const Home = (props) => {
                     })}
 
             </div>
-            <p className='joke-header'>
-                <strong> Here's a Quick Joke For You!</strong>
-            </p>
-            <p className='joke'>
-                <strong>{jokes}</strong>
-            </p>
+            <div className='joke-container'>
+                <p className='joke-header'>
+                    <strong> Here's a Quick Joke For You!</strong>
+                </p>
+                <p className='joke'>
+                    <strong>{jokes}</strong>
+                </p>
+
+            </div>
 
         </div>
     )

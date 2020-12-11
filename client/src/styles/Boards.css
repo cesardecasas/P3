@@ -4,31 +4,37 @@
     
 }
 
+.board-name-container {
+    background-color:  rgba(25,220,184,.9);
+    margin: 10px 0 0 10px;
+}
+
 .main{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto auto auto auto;
+    grid-template-columns: auto auto auto auto; 
+    grid-template-rows: 1fr 1fr 1fr 1fr; 
 }
 
 .Add{
     border: -20px;
     font-size: 50px;
-    background-color: rgba(255, 255, 255, .2);
+    background-color:  rgba(36,113,137);
     border: none;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0);
     color: white;
     font-weight: 800;
+    margin-top: 25px;
 }
 .title{
     color: 	rgb(112,128,144);
 }
 
-.container{
-    margin: 8px;
-border: 1px solid lightgrey;
+.task-container{
+margin:10px 0 0 100px ;
+border: 1px solid  rgba(36,113,137,1);
 border-radius:2px;
 width: 400px;
-background-color: rgba(255, 255, 255, 0.755);
+background-color: rgba(25,220,184,.9);
 }
 
 .name{
@@ -54,4 +60,8 @@ color: black;
 border-radius:2px;
 padding: 8px;
 margin-bottom: 8px;
+}
+
+.progress {
+    margin-top: 8px;
 }

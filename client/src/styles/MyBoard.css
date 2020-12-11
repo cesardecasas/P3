@@ -10,6 +10,7 @@
 .crd-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr ;
+    margin: 10px 0 0 10px;
   
     
 }
@@ -22,16 +23,29 @@
 }
 
 .eraser {
-    height: 25px;
-    width: 25px;
+    height: 35px;
+    width: 35px;
+    border: 1px solid black;
 }
 
 .pencil {
-    height: 25px;
-    width: 25px;
+    height: 35px;
+    width: 35px;
+    border: 1px solid black;
+
 }
 
 .board-crud-image-container {
     display: flex;
     justify-content: space-around;
+}
+
+.pencil:hover {
+    height:70px;
+    width: 70px;
+}
+
+.eraser:hover {
+    height: 70px;
+    width: 70px;
 }

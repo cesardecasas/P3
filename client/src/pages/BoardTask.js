@@ -68,7 +68,10 @@ const BoardTask = (props)=>{
     return tasks ? (
 
         <div className='main'>
-            <h1>{props.location.state.name}</h1>
+           <div className='board-name-container'>
+                <h1 className='board-name'>{props.location.state.name}</h1>
+           </div> 
+
             
                 {props.location.state.Tasks[0] ? columns.map((columnId, index)=>{
                         console.log(`h`,columnId)
@@ -76,18 +79,23 @@ const BoardTask = (props)=>{
                         const taskss = column.Steps.map(taskId=>taskId);
                         console.log(column)
                      return(
-                         <div className='container' key={index}>
-                             <h3 className='name'>{column.name}</h3>
-                             <button className='actions' onClick={()=>DeleteColumn(column.id)}>Delete</button>
-                             <Link to={location2}>
-                                <button className='actions' >Add Task</button>
-                             </Link>
+                         <div className=' task-container container' key={index}>
+                             <div className='name-container'>
+                                    <h3 className='name'>{column.name}</h3>
+                             </div>
+                             <div className='board-crud-image-container'>
+                                    <img src='https://www.netclipart.com/pp/m/75-756943_eraser-tool-pixelated-basketball.png' className='eraser' onClick={()=>DeleteColumn(column.id)} />
+                                    <Link to={location2}>
+                                        <img src='https://banner2.cleanpng.com/20180331/rve/kisspng-apple-pencil-pixel-art-pixel-art-5ac02c99308f97.1806420915225437691989.jpg' className='pencil' />
+                                    </Link>
+                             </div>
                              <div className="progress">
                                  {column.Steps.length < 6 ? (
                                      <div className="progress-bar" role="progressbar" style={{width: `${column.Steps.length}0%`}} aria-valuenow='20' aria-valuemin="0" aria-valuemax="100">{column.Steps.length}0%</div>
                                  ):(<div className="progress-bar bg-warning" role="progressbar" style={{width: `${column.Steps.length}0%`}} aria-valuenow='20' aria-valuemin="0" aria-valuemax="100">{column.Steps.length}0%</div>)
                                  
                                 }
+
                                 
                              </div>
                              <div className='tasklist'>
@@ -103,10 +111,11 @@ const BoardTask = (props)=>{
 
                  }):<p></p>}
             
-
-            <Link to={location} key={props.location.state.id}>
-                <button className='Add'>+</button>
-            </Link>
+            <div className='add-button-container'>
+                <Link to={location} key={props.location.state.id}>
+                    <button className='Add Add-button'>+</button>
+                </Link>
+            </div>
         </div>
     ) : <h1>Loading...</h1> 
 }
