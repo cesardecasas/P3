@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import TextInput from '../components/TextInput'
-import {__CreateColumn} from '../services/TaskServices'
 import {__GetBoard} from '../services/BoardServices'
 import '../styles/Boards.css'
 import {Link} from 'react-router-dom'
+import {__CreateTask} from '../services/StepServices'
 
 
-const NewBoard = (props)=>{
-    const [boardName,setBoardName]=useState('')
+const NewTask = (props)=>{
+    const [name,setBoardName]=useState('')
+    const [description,setDesc]=useState('')
+    const [struggles, setStruggles]=useState('')
     const [formError,setFormError]=useState(false)
     const [again, setAgain]=useState(true)
     const [board,setBoard]=useState()
@@ -16,16 +18,33 @@ const NewBoard = (props)=>{
         setBoardName(target.value)
     }
 
+    const handleChangeD =({target})=>{
+        setDesc(target.value)
+    }
+
+    const Struggles =({target})=>{
+        if(target.value === 'true'){
+            setStruggles(true)
+        }
+        if(target.value === 'false'){
+            setStruggles(false)
+        }
+        
+       
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         try{
-            if(!boardName){
+            if(!name){
                 setFormError(true);
                 return;
             }
-            const {id} = JSON.parse(localStorage.getItem('user'));
-            const boardId= props.location.state.id
-            const res =  await __CreateColumn(id, boardId, {name:boardName});
+            const formData ={
+                name,description,struggles
+            }
+            const boardId= props.location.state[0].id
+            const res =  await __CreateTask(boardId, formData);
             const nBoard = await __GetBoard(boardId)
             setBoard(nBoard)
             setBoardName('')
@@ -49,18 +68,30 @@ const NewBoard = (props)=>{
         <div>
             <div className="card card-sm">
                 <div className="card-header">
-                    Column
+                    Task
                 </div>
                 <div className="card-body">
                     {formError ? <p className='alert alert-danger'>Board name required</p>:<p></p>}
                     <form className='form flex-col box' onSubmit={handleSubmit}>
                         <TextInput
-                            placeholder='Column name'
+                            placeholder='Task name'
                             type='text'
-                            name='inputBoardName'
-                            value={boardName}
+                            name='name'
+                            value={name}
                             onChange={handleChangeB}
                         />
+                        <TextInput
+                            placeholder='Description'
+                            type='text'
+                            name='description'
+                            value={description}
+                            onChange={handleChangeD}
+                        />
+                        <label for="struggles" >Struggles?</label>
+                        <select name="struggles" id="cars" onClick={Struggles}>
+                            <option value={true} className='dropdown-item' >Yes</option>
+                            <option value={false} className='dropdown-item' >No</option>
+                        </select>
                             <button className='button mt-2'>Create</button>
                     </form>
                 </div>
@@ -83,4 +114,4 @@ const NewBoard = (props)=>{
     )
 }
 
-export default NewBoard
+export default NewTask
