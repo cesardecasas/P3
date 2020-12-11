@@ -33,7 +33,8 @@ console.log(`column:`,props)
         
         <Container>
             <Title>{props.column.name}</Title>
-            <Button onClick={()=>props.delete(props.column.id)}>delete</Button>
+            <Button onClick={()=>props.delete(props.column.id)}>Delete</Button>
+            <Button>Add Task</Button>
             <Droppable droppableId={JSON.stringify(props.column.id)}>
                 {(provided)=>(
                 <TaskList 

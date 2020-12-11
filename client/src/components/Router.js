@@ -12,6 +12,7 @@ import NewBoard from '../pages/NewBoard'
 import BoardTask from '../pages/BoardTask'
 import UpdateBoard from '../pages/UpdateBoard'
 import CreateTask from '../pages/CreateTask' 
+import AddTask from '../pages/AddTask'
 
 
 
@@ -117,6 +118,15 @@ const Router  = (props) => {
               exact path='/create/task' 
               component={ props => 
                   <CreateTask {...props}/>
+              }/>  
+
+              <ProtectedRoute
+               authenticated={authenticated}
+               currentUser={currentUser}  
+                exact path='/add/task' 
+                render={ props => 
+                  <AddTask {...props}
+                  location={props.location}/>
               }/>  
 
               <ProtectedRoute
