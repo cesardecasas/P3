@@ -54,8 +54,10 @@ const BoardTask = (props)=>{
 
 
     return tasks ? (
-        <div className='main'>
-            <h1>{props.location.state.name}</h1>
+        <div className='main-container'>
+            <div className='header-container'>
+                <h1 className='header'>{props.location.state.name}</h1>
+            </div>
             <DragDropContext  >
                 {props.location.state.Tasks[0] ? columns.map(columnId=>{
                     
@@ -63,7 +65,7 @@ const BoardTask = (props)=>{
                         const taskss = column.Steps.map(taskId=>taskId);
                      return <Column column={column} tasks={taskss} key={column.id} delete={DeleteColumn}/>
                      
-                 }):<p></p>}
+                 }): <p></p>}
             </DragDropContext>
             <Link to={location} key={props.location.state.id}>
                 <button className='Add'>+</button>
