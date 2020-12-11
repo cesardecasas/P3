@@ -77,7 +77,7 @@ const Home = (props) => {
                     </p>
                 </div>
                 <div className='intro-footer'>
-                    <img className='image'  src={logo} />
+                    <img className='logo-image'  src={logo} />
                     <p><strong>Welcome Back, {props.currentUser.name}</strong></p>
                 </div>
                 <button onClick={()=> redirection()}>Lets Get Started</button>
@@ -85,14 +85,10 @@ const Home = (props) => {
             <div className='joke-container'>
                
                    
-                        <p className='joke-header'>
-                           <strong> Here's a Quick Joke For You!</strong>
-                        </p>
+                        
                     
                     
-                        <p className='joke'>
-                            <strong>{jokes}</strong>
-                        </p>
+                       
                    
                
                
@@ -110,9 +106,10 @@ const Home = (props) => {
                                 <Link to={location} key={board.name}>
                                     <h3 class="card-header">{board.name}</h3>
                                 </Link>
-                                
-                                <button className='delete' onClick = {()=> DeleteBoard(board.id)}>delete</button>
-                                <button className='delete' onClick = {()=> UpdateBoard()} > update</button>
+                                <div className='board-crud-image-container'>
+                                    <img src='https://www.netclipart.com/pp/m/75-756943_eraser-tool-pixelated-basketball.png' className='eraser' onClick = {()=> DeleteBoard(board.id)} />
+                                    <img src='https://banner2.cleanpng.com/20180331/rve/kisspng-apple-pencil-pixel-art-pixel-art-5ac02c99308f97.1806420915225437691989.jpg' className='pencil' onClick = {()=> UpdateBoard(board.id)} />
+                                </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Columns Name</h5>
                                     {board.Tasks.map(task=><p className='card-text'>{task.name}</p>)}
@@ -123,9 +120,10 @@ const Home = (props) => {
                                 <Link to={location} key={board.name}>
                                     <h3 className="card-header">{board.name}</h3>
                                 </Link>
-                                
-                                <button className='delete' onClick = {()=> DeleteBoard(board.id)}>delete</button>
-                                <button className='delete' onClick = {()=> UpdateBoard()} > update</button>
+                                <div className='board-crud-image-container'>
+                                    <img src='https://www.netclipart.com/pp/m/75-756943_eraser-tool-pixelated-basketball.png' className='eraser' onClick = {()=> DeleteBoard(board.id)} />
+                                    <img src='https://banner2.cleanpng.com/20180331/rve/kisspng-apple-pencil-pixel-art-pixel-art-5ac02c99308f97.1806420915225437691989.jpg' className='pencil' onClick = {()=> UpdateBoard(board.id)} />
+                                </div>
                                 <div className="card-body">
                                     <h5 className="card-title">Columns Name</h5>
                                     {board.Tasks.map(task=><p className='card-text'>{task.name}</p>)}
@@ -135,6 +133,12 @@ const Home = (props) => {
                     })}
 
             </div>
+            <p className='joke-header'>
+                <strong> Here's a Quick Joke For You!</strong>
+            </p>
+            <p className='joke'>
+                <strong>{jokes}</strong>
+            </p>
 
         </div>
     )
