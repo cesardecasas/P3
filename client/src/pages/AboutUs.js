@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/AboutUs.css'
 // import Carousel from '../components/Carousel'
-import logo from '../helpers/PThreeLogo.png'
+import logo from './helpers/PThreeLogo.png'
 
 export default (props) => {
   const getStarted = () => {

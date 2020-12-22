@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import logo from '../helpers/PThreeLogo.png'
+import logo from './helpers/PThreeLogo.png'
 import '../styles/Home.css'
 import {__GetRecentBoards, __DeleteBoard} from '../services/BoardServices'
 import {Link} from 'react-router-dom'
