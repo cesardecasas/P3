@@ -29,9 +29,7 @@ const MyBoards = (props)=>{
             console.log(error)
         }
     }
-    const UpdateBoard = () => {
-        props.history.push('/update-board')
-    }
+    
 
     useEffect(()=>{
         getBoards()
@@ -53,6 +51,7 @@ const MyBoards = (props)=>{
                             pathname: '/update-board',
                             state:board.id
                         }
+                        
 
                         return board.Tasks.length >= 1 ?(   
                            
@@ -62,7 +61,9 @@ const MyBoards = (props)=>{
                                 </Link>
                                 <div className='board-crud-image-container'>
                                     <img src='https://images.costco-static.com/ImageDelivery/imageService?profileId=12026540&itemId=719046-847&recipeName=680' className='eraser' onClick = {()=> DeleteBoard(board.id)} />
-                                    <img  src='https://banner2.cleanpng.com/20180331/rve/kisspng-apple-pencil-pixel-art-pixel-art-5ac02c99308f97.1806420915225437691989.jpg' className='pencil' onClick = {()=> UpdateBoard()} />
+                                    <Link to={location2} key={board.name}>
+                                        <img  src='https://banner2.cleanpng.com/20180331/rve/kisspng-apple-pencil-pixel-art-pixel-art-5ac02c99308f97.1806420915225437691989.jpg' className='pencil' />
+                                    </Link>                                
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Columns Name</h5>
@@ -78,12 +79,12 @@ const MyBoards = (props)=>{
                                     </Link>
                                     <div className='board-crud-image-container'>
                                          <img src='https://www.netclipart.com/pp/m/75-756943_eraser-tool-pixelated-basketball.png' className='eraser' onClick = {()=> DeleteBoard(board.id)} />
-                                         <img src='https://banner2.cleanpng.com/20180331/rve/kisspng-apple-pencil-pixel-art-pixel-art-5ac02c99308f97.1806420915225437691989.jpg' className='pencil' onClick = {()=> UpdateBoard(board.id)} />
-                                    </div>     
                                     <Link to={location2} key={board.name}>
+                                         <img src='https://banner2.cleanpng.com/20180331/rve/kisspng-apple-pencil-pixel-art-pixel-art-5ac02c99308f97.1806420915225437691989.jpg' className='pencil'  />
+                                    </Link>
+                                    </div>     
                                         
                         
-                                    </Link>
                                     <div className="card-body">
                                         <h5 className="card-title">Columns Name</h5>
                                         {board.Tasks.map(task=><p className='card-text'>{task.name}</p>)}
